@@ -1,5 +1,4 @@
-# 🎮 Game Jam Project: 
-
+# Game Off 2024 Project: 
 ![Game Logo](assets/images/logo.png)
 
 ## Introduction
