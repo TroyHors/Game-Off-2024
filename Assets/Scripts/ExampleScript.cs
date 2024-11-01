@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExampleScript : MonoBehaviour {
-    // Both private and public variables should be named in PascalCase and named by its funtion.
+    // Both private and public variables should be named in camel and named by its funtion.
     [SerializeField]  // Use SerializeField instead of public variables
     private int exampleValue = 0;
     // Public variables will be exposedpublicly to other scripts.
@@ -25,7 +25,6 @@ public class ExampleScript : MonoBehaviour {
         }
     }
 
-    /// Example of a private method.
     /// This method performs a specific action and should include
     /// a brief description of its purpose and functionality.
     private void PerformAction() {
