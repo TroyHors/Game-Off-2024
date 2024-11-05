@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class RevealController : MonoBehaviour {
-    public Tilemap tilemap;       // Tilemap 引用
-    public Transform player;      // 玩家对象
-    public int revealLimit = 3;   // 最大揭示次数
+    public Tilemap tilemap;        // Tilemap 引用
+    public Transform player;       // 玩家对象
+    public int revealLimit = 3;    // 最大揭示次数
+    public int revealRadius = 1;   // 揭示的半径，控制显示的瓦片区域大小
 
     private bool isTilemapVisible = false;
-    private Vector3Int[] previousTiles; // 上一次显示的瓦片位置
-    private int currentRevealCount = 0; // 当前揭示次数
+    private Vector3Int[] previousTiles;  // 上一次显示的瓦片位置
+    private int currentRevealCount = 0;  // 当前揭示次数
 
     void Start() {
         if (tilemap != null) {
@@ -57,12 +58,14 @@ public class RevealController : MonoBehaviour {
         // 获取玩家所在的瓦片位置
         Vector3Int playerTilePosition = WorldToTilePosition( player.position );
 
-        // 定义 3x3 范围内的瓦片坐标
-        Vector3Int[] currentTiles = new Vector3Int[ 9 ];
+        // 根据 revealRadius 定义显示区域
+        int areaSize = ( 2 * revealRadius + 1 ) * ( 2 * revealRadius + 1 );
+        Vector3Int[] currentTiles = new Vector3Int[ areaSize ];
         int index = 0;
 
-        for (int x = -1 ; x <= 1 ; x++) {
-            for (int y = -1 ; y <= 1 ; y++) {
+        // 计算以玩家为中心的瓦片坐标，根据 revealRadius 设置范围
+        for (int x = -revealRadius ; x <= revealRadius ; x++) {
+            for (int y = -revealRadius ; y <= revealRadius ; y++) {
                 currentTiles[ index ] = new Vector3Int( playerTilePosition.x + x , playerTilePosition.y + y , playerTilePosition.z );
                 index++;
             }
@@ -78,7 +81,7 @@ public class RevealController : MonoBehaviour {
             }
         }
 
-        // 显示当前的 3x3 瓦片区域
+        // 显示当前半径范围内的瓦片区域
         foreach (Vector3Int pos in currentTiles) {
             if (tilemap.HasTile( pos )) {
                 tilemap.SetTileFlags( pos , TileFlags.None );
