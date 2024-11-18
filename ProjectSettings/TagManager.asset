@@ -38,8 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Scene
+  - name: Map-Back
     uniqueID: 1786771039
+    locked: 0
+  - name: Map-Middle
+    uniqueID: 711053179
+    locked: 0
+  - name: Map-Front
+    uniqueID: 2311392351
     locked: 0
   - name: Default
     uniqueID: 0
