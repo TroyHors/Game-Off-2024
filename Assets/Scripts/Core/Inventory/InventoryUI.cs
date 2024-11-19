@@ -1,43 +1,56 @@
 // InventoryUI.cs
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour {
-    public GameObject inventoryPanel;      // 背包面板
-    public Transform itemsParent;          // 物品槽位的父对象
-    public GameObject inventorySlotPrefab; // 物品槽位预制体
+    public GameObject inventoryPanel; // 背包面板
+    public Transform inventoryParent; // 背包物品父对象
+    public GameObject inventorySlotPrefab; // 背包槽位预制体
 
-    Inventory inventory;                    // 背包管理器
-    InventorySlot[] slots;                  // 物品槽位数组
+    private Inventory inventory;
+    private List<GameObject> instantiatedSlots = new List<GameObject>();
 
     void Start() {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
-
-        // 初始化槽位
-        slots = new InventorySlot[ inventory.space ];
-        for (int i = 0 ; i < inventory.space ; i++) {
-            GameObject slotObj = Instantiate( inventorySlotPrefab , itemsParent );
-            slots[ i ] = slotObj.GetComponent<InventorySlot>();
+        if (inventory == null) {
+            Debug.LogError( "Inventory instance not found!" );
+            return;
         }
+
+        // 订阅背包变化事件
+        inventory.onItemChangedCallback += UpdateUI;
 
         UpdateUI();
     }
 
     void Update() {
-        // 按下I键切换背包显示
-        if (Input.GetKeyDown( KeyCode.B )) {
+        // 切换背包面板显示
+        if (Input.GetKeyDown( KeyCode.I )) {
             inventoryPanel.SetActive( !inventoryPanel.activeSelf );
         }
     }
 
-    // 更新背包UI
-    void UpdateUI() {
-        for (int i = 0 ; i < slots.Length ; i++) {
-            if (i < inventory.items.Count) {
-                slots[ i ].AddItem( inventory.items[ i ] , 1 ); // 假设每个物品数量为1
+    public void UpdateUI() {
+        // 清空当前显示的物品槽位
+        foreach (GameObject slot in instantiatedSlots) {
+            Destroy( slot );
+        }
+        instantiatedSlots.Clear();
+
+        // 遍历背包中的物品并实例化槽位
+        foreach (Item item in inventory.items) {
+            GameObject slotObj = Instantiate( inventorySlotPrefab , inventoryParent );
+            InventorySlot slot = slotObj.GetComponent<InventorySlot>();
+            if (slot != null) {
+                // 计算物品在背包中的数量
+                int itemCount = inventory.GetItemCount( item );
+
+                slot.AddItem( item , itemCount );
+
+                instantiatedSlots.Add( slotObj );
             } else {
-                slots[ i ].ClearSlot();
+                Debug.LogError( "InventorySlot script not found on prefab!" );
             }
         }
     }

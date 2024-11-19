@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown( KeyCode.E )) {
             if (nearbyInteractable != null) {
                 nearbyInteractable.Interact();
+                Debug.Log( "q" );
+            } else {
+                // 如果不在交互区域，可以添加其他交互逻辑
+                Debug.Log( "w" );
             }
         }
     }
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         IInteractable interactable = collision.GetComponent<IInteractable>();
         if (interactable != null) {
             nearbyInteractable = interactable;
-            // 可以添加提示UI，如“按E交互”
+            Debug.Log( "1" );
         }
     }
 
@@ -74,7 +78,6 @@ public class PlayerController : MonoBehaviour {
         IInteractable interactable = collision.GetComponent<IInteractable>();
         if (interactable != null && interactable.Equals( nearbyInteractable )) {
             nearbyInteractable = null;
-            // 移除提示UI
         }
     }
 }

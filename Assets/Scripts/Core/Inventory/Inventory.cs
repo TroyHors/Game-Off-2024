@@ -20,6 +20,16 @@ public class Inventory : MonoBehaviour {
     }
 
     public bool Add( Item item ) {
+        // 检查是否已有该物品且未超过最大堆叠
+        foreach (Item invItem in items) {
+            if (invItem == item && item.maxStack > 1) {
+                // 实现堆叠逻辑
+                // 此处假设每次添加一个物品
+                onItemChangedCallback?.Invoke();
+                return true;
+            }
+        }
+
         if (items.Count >= space) {
             Debug.Log( "Not enough room." );
             return false;
@@ -35,5 +45,15 @@ public class Inventory : MonoBehaviour {
             items.Remove( item );
             onItemChangedCallback?.Invoke();
         }
+    }
+
+    public int GetItemCount( Item item ) {
+        int count = 0;
+        foreach (Item invItem in items) {
+            if (invItem == item) {
+                count++;
+            }
+        }
+        return count;
     }
 }
