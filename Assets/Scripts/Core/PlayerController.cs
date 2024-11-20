@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     private float nextMoveTime = 0f; // 用于控制移动间隔
 
-    private IInteractable nearbyInteractable = null; // 当前附近的可交互物品
+    //private IInteractable nearbyInteractable = null; // 当前附近的可交互物品
 
     void Start() {
         if (tilemap == null) {
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         HandleMovement(); // 处理玩家的离散移动
-        HandleInteraction(); // 处理交互
+        //HandleInteraction(); // 处理交互
     }
 
     private void HandleMovement() {
@@ -54,30 +54,30 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void HandleInteraction() {
-        if (Input.GetKeyDown( KeyCode.E )) {
-            if (nearbyInteractable != null) {
-                nearbyInteractable.Interact();
-                Debug.Log( "q" );
-            } else {
-                // 如果不在交互区域，可以添加其他交互逻辑
-                Debug.Log( "w" );
-            }
-        }
-    }
+//    private void HandleInteraction() {
+//        if (Input.GetKeyDown( KeyCode.E )) {
+//            if (nearbyInteractable != null) {
+//                nearbyInteractable.Interact();
+//                Debug.Log( "q" );
+//            } else {
+//                // 如果不在交互区域，可以添加其他交互逻辑
+//                Debug.Log( "w" );
+//            }
+//        }
+//    }
 
-    private void OnTriggerEnter2D( Collider2D collision ) {
-        IInteractable interactable = collision.GetComponent<IInteractable>();
-        if (interactable != null) {
-            nearbyInteractable = interactable;
-            Debug.Log( "1" );
-        }
-    }
+//    private void OnTriggerEnter2D( Collider2D collision ) {
+//        IInteractable interactable = collision.GetComponent<IInteractable>();
+//        if (interactable != null) {
+//            nearbyInteractable = interactable;
+//            Debug.Log( "1" );
+//        }
+//    }
 
-    private void OnTriggerExit2D( Collider2D collision ) {
-        IInteractable interactable = collision.GetComponent<IInteractable>();
-        if (interactable != null && interactable.Equals( nearbyInteractable )) {
-            nearbyInteractable = null;
-        }
-    }
+//    private void OnTriggerExit2D( Collider2D collision ) {
+//        IInteractable interactable = collision.GetComponent<IInteractable>();
+//        if (interactable != null && interactable.Equals( nearbyInteractable )) {
+//            nearbyInteractable = null;
+//        }
+//    }
 }

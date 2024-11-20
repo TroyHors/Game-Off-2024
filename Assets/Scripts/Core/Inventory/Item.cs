@@ -1,8 +1,16 @@
 using UnityEngine;
 
-[System.Serializable]
-public class Item {
+public enum ItemType { Fish, SP, Bait }
+
+[CreateAssetMenu( fileName = "New Item" , menuName = "Inventory/Item Data" )]
+public class ItemData_SO : ScriptableObject {
+    public ItemType itemType;
     public string itemName;
     public Sprite itemIcon;
-    // 可以根据需要添加更多属性，如描述、类型等
+    public int itemAmount;
+    public bool stackable;
+    [TextArea]
+    public string description = "";
+
+
 }

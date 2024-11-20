@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ecdd0228190584286a2f6fb4f615d2, type: 3}
   m_Name: Fish2
   m_EditorClassIdentifier: 
+  itemType: 0
   itemName: F2
-  icon: {fileID: 300967146, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+  itemIcon: {fileID: -1948467077, guid: 9d64cea294159b248aa698707522ea92, type: 3}
+  itemAmount: 0
+  stackable: 1
   description: 
-  maxStack: 10
