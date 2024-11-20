@@ -1,15 +1,14 @@
-// Inventory.cs
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-    public static Inventory instance;
+    public static Inventory instance; // 单例模式
 
-    public int space = 20;
     public List<Item> items = new List<Item>();
+    public int space = 20; // 背包容量
 
-    public Action onItemChangedCallback;
+    public InventoryUI inventoryUI; // 引用InventoryUI
+    public GameObject inventorySlotPrefab; // 引用InventorySlot Prefab
 
     void Awake() {
         if (instance != null) {
@@ -20,40 +19,31 @@ public class Inventory : MonoBehaviour {
     }
 
     public bool Add( Item item ) {
-        // 检查是否已有该物品且未超过最大堆叠
-        foreach (Item invItem in items) {
-            if (invItem == item && item.maxStack > 1) {
-                // 实现堆叠逻辑
-                // 此处假设每次添加一个物品
-                onItemChangedCallback?.Invoke();
-                return true;
-            }
-        }
-
         if (items.Count >= space) {
             Debug.Log( "Not enough room." );
             return false;
         }
-
         items.Add( item );
-        onItemChangedCallback?.Invoke();
+        inventoryUI.UpdateUI();
         return true;
     }
 
-    public void RemoveItem( Item item ) {
-        if (items.Contains( item )) {
-            items.Remove( item );
-            onItemChangedCallback?.Invoke();
-        }
+    public void Remove( Item item ) {
+        items.Remove( item );
+        inventoryUI.UpdateUI();
     }
 
-    public int GetItemCount( Item item ) {
-        int count = 0;
-        foreach (Item invItem in items) {
-            if (invItem == item) {
-                count++;
-            }
+    // 交换两个物品的位置
+    public void SwapItems( int index1 , int index2 ) {
+        if (index1 < 0 || index1 >= items.Count || index2 < 0 || index2 >= items.Count) {
+            Debug.LogError( "Invalid item indices for swapping." );
+            return;
         }
-        return count;
+
+        Item temp = items[ index1 ];
+        items[ index1 ] = items[ index2 ];
+        items[ index2 ] = temp;
+
+        inventoryUI.UpdateUI();
     }
 }
