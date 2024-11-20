@@ -15,6 +15,6 @@ MonoBehaviour:
   itemType: 0
   itemName: F1
   itemIcon: {fileID: 1122311687, guid: 9d64cea294159b248aa698707522ea92, type: 3}
-  itemAmount: 0
+  itemAmount: 1
   stackable: 1
   description: 
