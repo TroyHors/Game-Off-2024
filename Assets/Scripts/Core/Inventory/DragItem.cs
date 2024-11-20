@@ -30,10 +30,12 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnEndDrag( PointerEventData eventData ) {
         if (EventSystem.current.IsPointerOverGameObject()) {
-            if (InventoryManager.Instance.CheckInInventoryUI( eventData.position ) || InventoryManager.Instance.CheckInCraftingUI( eventData.position )) {
-                Debug.Log( "1" );
+            if (InventoryManager.Instance.CheckInInventoryUI( eventData.position ) || 
+                InventoryManager.Instance.CheckInCraftingUI( eventData.position ) ||
+                InventoryManager.Instance.CheckInblendingUI(eventData.position)){ 
                 if (eventData.pointerEnter.gameObject.GetComponent<SlotHolder>()) {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponent<SlotHolder>();
+                    Debug.Log( targetHolder );
                 } else {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponentInParent<SlotHolder>();
                 }
@@ -45,9 +47,12 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     case SlotType.CRAFT:
                     SwapItem();
                     break;
-                    case SlotType.ARMOR:
+                    case SlotType.RESULT_C:
                     break;
-                    case SlotType.ACTION:
+                    case SlotType.BLEND:
+                    SwapItem();
+                    break;
+                    case SlotType.RESULT_B:
                     break;
                 }
 
@@ -78,5 +83,6 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             targetHolder.itemUI.Bag.items[ targetHolder.itemUI.Index ] = tempItem;
         }
     }
+
 
 }

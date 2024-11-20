@@ -15,8 +15,9 @@ public class Adder : MonoBehaviour {
         if (Input.GetKeyDown( KeyCode.R )) {
             if (itemData != null) {
                 if (InventoryManager.Instance != null) {
-                    InventoryManager.Instance.inventoryData.AddItem( itemData , 1 );
+                    InventoryManager.Instance.craftingData.AddItem( itemData , 1 );
                     InventoryManager.Instance.inventoryUI.RefreshUI();
+                    InventoryManager.Instance.craftingUI.RefreshUI();
                 } else {
                     Debug.LogError( "InventoryManager.Instance is null in Update!" );
                 }

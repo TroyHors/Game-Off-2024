@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641a4235915289c4598de1b2b948393e, type: 3}
   m_Name: Craft
   m_EditorClassIdentifier: 
-  craftingItems:
+  items:
   - itemData: {fileID: 0}
     amount: 0
   - itemData: {fileID: 0}
@@ -23,3 +23,4 @@ MonoBehaviour:
     amount: 0
   - itemData: {fileID: 0}
     amount: 0
+  resultSlot: {fileID: 11400000, guid: 4487486dee1944c4ab01cf08cd6070e5, type: 2}

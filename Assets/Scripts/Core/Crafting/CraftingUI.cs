@@ -1,14 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftingUI : MonoBehaviour {
-    public SlotHolder[] craftingSlots;
+    public Button craftButton;
+    public List<Recipe> allRecipes; // 所有配方列表
+    public CraftingData_SO craftingData;
+    public void TryCraft() {
+        // 寻找符合的配方
+        Recipe matchingRecipe = craftingData.FindMatchingRecipe( allRecipes );
 
-    public void RefreshUI() {
-        for (int i = 0 ; i < craftingSlots.Length ; i++) {
-            craftingSlots[ i ].itemUI.Index = i;
-            craftingSlots[ i ].UpdateItem();
+        if (matchingRecipe != null) {
+            craftingData.Craft( matchingRecipe );
+        } else {
+            Debug.Log( "没有符合的配方！" );
         }
+    }
+    void Start() {
+        craftButton.onClick.AddListener( () => TryCraft() );
+        InventoryManager.Instance.resultUI_C.RefreshUI();
+        InventoryManager.Instance.resultUI_B.RefreshUI();
+
     }
 }

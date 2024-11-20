@@ -8,6 +8,7 @@ public class ItemData_SO : ScriptableObject {
     public string itemName;
     public Sprite itemIcon;
     public int itemAmount;
+    public int maxStack;
     public bool stackable;
     [TextArea]
     public string description = "";

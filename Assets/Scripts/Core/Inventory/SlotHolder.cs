@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SlotType { BAG, CRAFT, ARMOR, ACTION }
+public enum SlotType { BAG, CRAFT, RESULT_C,BLEND,RESULT_B }
 
 public class SlotHolder : MonoBehaviour {
     public SlotType slotType;
@@ -14,12 +14,18 @@ public class SlotHolder : MonoBehaviour {
             itemUI.Bag = InventoryManager.Instance.inventoryData;
             break;
             case SlotType.CRAFT:
-            itemUI.BagCrafting = InventoryManager.Instance.craftingData;
+            itemUI.Bag = InventoryManager.Instance.craftingData;
             break;
-            case SlotType.ARMOR:
+            case SlotType.RESULT_C:
+            itemUI.Bag = InventoryManager.Instance.resultData_C;
             break;
-            case SlotType.ACTION:
+            case SlotType.BLEND:
+            itemUI.Bag = InventoryManager.Instance.blendingData;
             break;
+            case SlotType.RESULT_B:
+            itemUI.Bag = InventoryManager.Instance.resultData_B;
+            break;
+
         }
 
         var item = itemUI.Bag.items[ itemUI.Index ];
