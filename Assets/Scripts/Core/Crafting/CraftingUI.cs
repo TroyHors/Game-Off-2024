@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingUI : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class CraftingUI : MonoBehaviour {
+    public SlotHolder[] craftingSlots;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void RefreshUI() {
+        for (int i = 0 ; i < craftingSlots.Length ; i++) {
+            craftingSlots[ i ].itemUI.Index = i;
+            craftingSlots[ i ].UpdateItem();
+        }
     }
 }

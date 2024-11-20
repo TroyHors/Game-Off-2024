@@ -34,4 +34,16 @@ public class InventoryManager : Singleton<InventoryManager> {
         return false;
     }
 
+    public bool CheckInCraftingUI( Vector3 position ) {
+        for (int i = 0 ; i < craftingUI.craftingSlots.Length ; i++) {
+            RectTransform t = craftingUI.craftingSlots[ i ].transform as RectTransform;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint( t , position )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

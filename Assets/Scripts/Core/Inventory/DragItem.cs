@@ -29,9 +29,9 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
 
     public void OnEndDrag( PointerEventData eventData ) {
-        // 放下物品 交换数据
         if (EventSystem.current.IsPointerOverGameObject()) {
-            if (InventoryManager.Instance.CheckInInventoryUI( eventData.position )) {
+            if (InventoryManager.Instance.CheckInInventoryUI( eventData.position ) || InventoryManager.Instance.CheckInCraftingUI( eventData.position )) {
+                Debug.Log( "1" );
                 if (eventData.pointerEnter.gameObject.GetComponent<SlotHolder>()) {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponent<SlotHolder>();
                 } else {
@@ -43,6 +43,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     SwapItem();
                     break;
                     case SlotType.CRAFT:
+                    SwapItem();
                     break;
                     case SlotType.ARMOR:
                     break;
@@ -60,6 +61,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         t.offsetMax = -Vector2.one * 5;
         t.offsetMin = Vector2.one * 5;
     }
+
     public void SwapItem() {
         if (targetHolder == currentHolder) return;
         var targetItem = targetHolder.itemUI.Bag.items[ targetHolder.itemUI.Index ];

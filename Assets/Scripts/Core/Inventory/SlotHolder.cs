@@ -14,6 +14,7 @@ public class SlotHolder : MonoBehaviour {
             itemUI.Bag = InventoryManager.Instance.inventoryData;
             break;
             case SlotType.CRAFT:
+            itemUI.BagCrafting = InventoryManager.Instance.craftingData;
             break;
             case SlotType.ARMOR:
             break;
