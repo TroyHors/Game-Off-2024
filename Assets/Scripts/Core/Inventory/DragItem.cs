@@ -42,7 +42,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     case SlotType.BAG:
                     SwapItem();
                     break;
-                    case SlotType.WEAPON:
+                    case SlotType.CRAFT:
                     break;
                     case SlotType.ARMOR:
                     break;

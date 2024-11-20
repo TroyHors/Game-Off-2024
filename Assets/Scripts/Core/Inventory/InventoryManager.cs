@@ -12,8 +12,10 @@ public class InventoryManager : Singleton<InventoryManager> {
     // TODO: 最后添加模版用于保存数据
     [Header( "Inventory Data" )]
     public InventoryData_SO inventoryData;
+    public CraftingData_SO craftingData;
     [Header( "Containers" )]
     public ContainerUI inventoryUI;
+    public CraftingUI craftingUI;
     [Header( "Drag Canvas" )]
     public Canvas dragCanvas;
     public DragData currentDrag;
