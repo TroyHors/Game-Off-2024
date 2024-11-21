@@ -32,7 +32,9 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         if (EventSystem.current.IsPointerOverGameObject()) {
             if (InventoryManager.Instance.CheckInInventoryUI( eventData.position ) || 
                 InventoryManager.Instance.CheckInCraftingUI( eventData.position ) ||
-                InventoryManager.Instance.CheckInblendingUI(eventData.position)){ 
+                InventoryManager.Instance.CheckInblendingUI(eventData.position) ||
+                InventoryManager.Instance.CheckInequipmentUI(eventData.position)){ 
+
                 if (eventData.pointerEnter.gameObject.GetComponent<SlotHolder>()) {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponent<SlotHolder>();
                     Debug.Log( targetHolder );
@@ -53,6 +55,11 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     SwapItem();
                     break;
                     case SlotType.RESULT_B:
+                    break;
+                    case SlotType.EQUIPMENT:
+                    if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Eq) {
+                        SwapItem();
+                    }
                     break;
                 }
 

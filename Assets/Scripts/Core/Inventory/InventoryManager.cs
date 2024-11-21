@@ -12,12 +12,14 @@ public class InventoryManager : Singleton<InventoryManager> {
     // TODO: 最后添加模版用于保存数据
     [Header( "Inventory Data" )]
     public InventoryData_SO inventoryData;
+    public InventoryData_SO equipmentData;
     public InventoryData_SO resultData_C;
     public InventoryData_SO resultData_B;
     public CraftingData_SO craftingData;
     public CraftingData_SO blendingData;
     [Header( "Containers" )]
     public ContainerUI inventoryUI;
+    public ContainerUI equipmentUI;
     public ContainerUI craftingUI;
     public ContainerUI blendingUI;
     public ContainerUI resultUI_C;
@@ -31,6 +33,7 @@ public class InventoryManager : Singleton<InventoryManager> {
         blendingUI.RefreshUI();
         resultUI_C.RefreshUI();
         resultUI_B.RefreshUI();
+        equipmentUI.RefreshUI();    
     }
     public bool CheckInInventoryUI( Vector3 position ) {
         for (int i = 0 ; i < inventoryUI.slotHolders.Length ; i++) {
@@ -58,6 +61,17 @@ public class InventoryManager : Singleton<InventoryManager> {
     public bool CheckInblendingUI( Vector3 position ) {
         for (int i = 0 ; i < blendingUI.slotHolders.Length ; i++) {
             RectTransform t = blendingUI.slotHolders[ i ].transform as RectTransform;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint( t , position )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public bool CheckInequipmentUI( Vector3 position ) {
+        for (int i = 0 ; i < equipmentUI.slotHolders.Length ; i++) {
+            RectTransform t = equipmentUI.slotHolders[ i ].transform as RectTransform;
 
             if (RectTransformUtility.RectangleContainsScreenPoint( t , position )) {
                 return true;

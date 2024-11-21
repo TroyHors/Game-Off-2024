@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour {
     public float moveDelay = 0.2f; // 移动的延迟，防止连续移动过快
     public Tilemap tilemap; // 引用Tilemap组件
+    public int moveDistance = 1;
 
     private float nextMoveTime = 0f; // 用于控制移动间隔
 
@@ -37,10 +38,10 @@ public class PlayerController : MonoBehaviour {
         Vector3Int direction = Vector3Int.zero;
 
         // 检查按键并设置移动方向，支持长按
-        if (Input.GetKey( KeyCode.W )) direction = new Vector3Int( 0 , 1 , 0 ); // 向上
-        else if (Input.GetKey( KeyCode.S )) direction = new Vector3Int( 0 , -1 , 0 ); // 向下
-        else if (Input.GetKey( KeyCode.A )) direction = new Vector3Int( -1 , 0 , 0 ); // 向左
-        else if (Input.GetKey( KeyCode.D )) direction = new Vector3Int( 1 , 0 , 0 ); // 向右
+        if (Input.GetKey( KeyCode.W )) direction = new Vector3Int( 0 , moveDistance , 0 ); // 向上
+        else if (Input.GetKey( KeyCode.S )) direction = new Vector3Int( 0 , -moveDistance , 0 ); // 向下
+        else if (Input.GetKey( KeyCode.A )) direction = new Vector3Int( -moveDistance , 0 , 0 ); // 向左
+        else if (Input.GetKey( KeyCode.D )) direction = new Vector3Int( moveDistance , 0 , 0 ); // 向右
 
         // 仅当检测到有效的移动方向时才进行移动
         if (direction != Vector3Int.zero) {
