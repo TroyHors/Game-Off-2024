@@ -14,7 +14,6 @@ public class Picking : MonoBehaviour, IInteractable {
                 InventoryManager.Instance.inventoryData.AddItem( itemData , amount );
                 InventoryManager.Instance.inventoryUI.RefreshUI();
                 InventoryManager.Instance.craftingUI.RefreshUI();
-                Debug.Log( 1 );
             } else {
                 Debug.LogError( "InventoryManager.Instance is null in Update!" );
             }

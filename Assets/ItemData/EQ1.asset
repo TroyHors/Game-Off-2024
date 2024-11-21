@@ -18,4 +18,5 @@ MonoBehaviour:
   itemAmount: 1
   maxStack: 1
   stackable: 0
+  bonus: {fileID: 11400000, guid: 8e095a120bf94514184331e2b5c12af7, type: 2}
   description: 

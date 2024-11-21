@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ItemType { Fish, SP, Bait, Eq }
@@ -10,8 +11,16 @@ public class ItemData_SO : ScriptableObject {
     public int itemAmount;
     public int maxStack;
     public bool stackable;
+    public Bonus bonus;
     [TextArea]
     public string description = "";
 
+    public void TriggerBonus( InventoryData_SO inventory ) {
+        if (inventory == InventoryManager.Instance.equipmentData) {
+            Debug.Log( inventory + "sdfa" );
+        } else {
+            Debug.Log( 2 );
+        }
+    }
 
 }

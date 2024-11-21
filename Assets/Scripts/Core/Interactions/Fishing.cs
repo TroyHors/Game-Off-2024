@@ -19,7 +19,6 @@ public class Fishing : MonoBehaviour, IInteractable {
     [Range( 0 , 100 )] public float specialItemProbability = 10.0f;
 
     public void Interact() {
-        // 选择物品
         SelectAndAddToBackpack();
     }
     public void SelectAndAddToBackpack() {

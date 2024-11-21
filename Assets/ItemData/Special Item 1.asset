@@ -16,5 +16,7 @@ MonoBehaviour:
   itemName: SP
   itemIcon: {fileID: -463164985, guid: 9d64cea294159b248aa698707522ea92, type: 3}
   itemAmount: 0
+  maxStack: 0
   stackable: 0
+  bonus: {fileID: 11400000, guid: 8e095a120bf94514184331e2b5c12af7, type: 2}
   description: 
