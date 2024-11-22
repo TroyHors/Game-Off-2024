@@ -59,6 +59,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     case SlotType.EQUIPMENT:
                     if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Eq) {
                         SwapItem();
+                        
                     }
                     break;
                 }

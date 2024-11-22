@@ -15,12 +15,6 @@ public class ItemData_SO : ScriptableObject {
     [TextArea]
     public string description = "";
 
-    public void TriggerBonus( InventoryData_SO inventory ) {
-        if (inventory == InventoryManager.Instance.equipmentData) {
-            Debug.Log( inventory + "sdfa" );
-        } else {
-            Debug.Log( 2 );
-        }
-    }
+    
 
 }
