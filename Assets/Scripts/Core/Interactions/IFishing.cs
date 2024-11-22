@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
 
-public class Fishing : MonoBehaviour, IInteractable {
+public class IFishing : MonoBehaviour, IInteractable {
     [Header( "分类及物品列表" )]
     public List<ItemData_SO> categoryA = new List<ItemData_SO>();
     public List<ItemData_SO> categoryB = new List<ItemData_SO>();

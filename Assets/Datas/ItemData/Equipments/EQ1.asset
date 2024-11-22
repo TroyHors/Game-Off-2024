@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33ecdd0228190584286a2f6fb4f615d2, type: 3}
-  m_Name: Eg
+  m_Name: EQ1
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: eg
-  itemIcon: {fileID: 0}
-  itemAmount: 0
-  maxStack: 0
+  itemType: 3
+  itemName: EQ1
+  itemIcon: {fileID: 852654277, guid: 9d64cea294159b248aa698707522ea92, type: 3}
+  itemAmount: 1
+  maxStack: 1
   stackable: 0
   description: 
+  bonusEffect: {fileID: 11400000, guid: f2e17c30c64f5ea4cb9c8561f93aac78, type: 2}

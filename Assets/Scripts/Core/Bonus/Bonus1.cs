@@ -1,9 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu( fileName = "New Attack Bonus" , menuName = "Bonus/Bonus1" )]
-public class Bonus1 : Bonus {
-    public override void ApplyBonus( ItemData_SO item , InventoryData_SO inventory ) {
+
+[CreateAssetMenu( fileName = "AttackBoostEffect" , menuName = "Item Effects/Attack Boost" )]
+public class AttackBoostEffect : ItemBonusEffect {
+    public float fast = 0.1f;
+    public float before;
+
+    public override void ApplyEffect() {
+        before = PlayerController.Instance.moveDelay;
+        PlayerController.Instance.moveDelay = fast;
+
+    }
+
+    public override void RemoveEffect() {
+        PlayerController.Instance.moveDelay = before;
 
     }
 }

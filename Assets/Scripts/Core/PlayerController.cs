@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour {
+    public static PlayerController Instance; // 单例实例
+
     public float moveDelay = 0.2f; // 移动的延迟，防止连续移动过快
     public Tilemap tilemap; // 引用Tilemap组件
     public int moveDistance = 1;
@@ -18,6 +20,11 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         if (tilemap == null) {
             Debug.LogError( "Tilemap reference is missing!" );
+        }
+        if (Instance == null) {
+            Instance = this; // 设置单例
+        } else {
+            Debug.LogError( "Multiple PlayerController instances detected!" );
         }
     }
 

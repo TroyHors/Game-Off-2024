@@ -1,7 +1,7 @@
 // CraftingTable.cs
 using UnityEngine;
 
-public class Crafting : MonoBehaviour, IInteractable {
+public class ICrafting : MonoBehaviour, IInteractable {
     public GameObject craftingUI; // 合成界面UI
     public GameObject inventoryUI;
 

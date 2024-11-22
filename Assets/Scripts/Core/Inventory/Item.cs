@@ -11,10 +11,29 @@ public class ItemData_SO : ScriptableObject {
     public int itemAmount;
     public int maxStack;
     public bool stackable;
-    public Bonus bonus;
     [TextArea]
     public string description = "";
 
+
+    public ItemBonusEffect bonusEffect;
+
+    // 应用特殊效果
+    public void ApplyBonusEffect() {
+        if (bonusEffect != null) {
+            bonusEffect.ApplyEffect();
+
+        }
+    }
+
+    // 移除特殊效果
+    public void RemoveBonusEffect() {
+        if (bonusEffect != null) {
+            bonusEffect.RemoveEffect();
+
+        }
+    }
+}
+
     
 
-}
+

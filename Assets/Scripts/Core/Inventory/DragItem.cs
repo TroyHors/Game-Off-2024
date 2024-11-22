@@ -37,33 +37,41 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
                 if (eventData.pointerEnter.gameObject.GetComponent<SlotHolder>()) {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponent<SlotHolder>();
-                    Debug.Log( targetHolder );
                 } else {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponentInParent<SlotHolder>();
                 }
 
                 switch (targetHolder.slotType) {
                     case SlotType.BAG:
+                    HandleBonusEffect( currentHolder , targetHolder , SlotType.BAG );
                     SwapItem();
                     break;
+
                     case SlotType.CRAFT:
+                    HandleBonusEffect( currentHolder , targetHolder , SlotType.CRAFT );
                     SwapItem();
                     break;
+
                     case SlotType.RESULT_C:
+                    HandleBonusEffect( currentHolder , targetHolder , SlotType.RESULT_C );
                     break;
+
                     case SlotType.BLEND:
+                    HandleBonusEffect( currentHolder , targetHolder , SlotType.BLEND );
                     SwapItem();
                     break;
+
                     case SlotType.RESULT_B:
+                    HandleBonusEffect( currentHolder , targetHolder , SlotType.RESULT_B );
                     break;
+
                     case SlotType.EQUIPMENT:
                     if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Eq) {
+                        HandleBonusEffect( currentHolder , targetHolder , SlotType.EQUIPMENT );
                         SwapItem();
-                        
                     }
                     break;
                 }
-
                 currentHolder.UpdateItem();
                 targetHolder.UpdateItem();
             }
@@ -92,5 +100,26 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
     }
 
+    private void HandleBonusEffect( SlotHolder currentHolder , SlotHolder targetHolder , SlotType targetSlotType ) {
+        var currentItem = currentHolder.itemUI.Bag.items[ currentHolder.itemUI.Index ];
+
+        // 如果当前物品没有特殊效果，直接返回
+        if (currentItem.itemData == null || currentItem.itemData.bonusEffect == null) {
+            Debug.Log( 1 );
+            return;
+        }
+
+        // 如果移出 SlotType.EQUIPMENT，则移除效果
+        if (currentHolder.slotType == SlotType.EQUIPMENT && targetSlotType != SlotType.EQUIPMENT) {
+            currentItem.itemData.RemoveBonusEffect();
+            Debug.Log( $"移除 {currentItem.itemData.itemName} 的特殊效果" );
+        }
+
+        // 如果移入 SlotType.EQUIPMENT，则触发效果
+        if (targetSlotType == SlotType.EQUIPMENT) {
+            currentItem.itemData.ApplyBonusEffect();
+            Debug.Log( $"触发 {currentItem.itemData.itemName} 的特殊效果" );
+        }
+    }
 
 }

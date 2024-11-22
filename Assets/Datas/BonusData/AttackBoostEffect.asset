@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ecdd0228190584286a2f6fb4f615d2, type: 3}
-  m_Name: Eg 2
+  m_Script: {fileID: 11500000, guid: f551f5a9e0642ff4292a6cced05cff29, type: 3}
+  m_Name: AttackBoostEffect
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: eg
-  itemIcon: {fileID: 0}
-  itemAmount: 0
-  maxStack: 0
-  stackable: 0
-  description: 
+  attackBoostAmount: 10

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Picking : MonoBehaviour, IInteractable {
+public class IPicking : MonoBehaviour, IInteractable {
     public ItemData_SO itemData;
     public int amount = 5;
     public bool isPicking = false;
