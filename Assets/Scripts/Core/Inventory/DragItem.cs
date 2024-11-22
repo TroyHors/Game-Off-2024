@@ -63,12 +63,15 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
                     case SlotType.RESULT_B:
                     HandleBonusEffect( currentHolder , targetHolder , SlotType.RESULT_B );
+
                     break;
 
                     case SlotType.EQUIPMENT:
                     if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Eq) {
-                        HandleBonusEffect( currentHolder , targetHolder , SlotType.EQUIPMENT );
-                        SwapItem();
+                        if (!foundSame(targetHolder, currentItemUI.Bag.items[ currentItemUI.Index ].itemData)) {
+                            HandleBonusEffect( currentHolder , targetHolder , SlotType.EQUIPMENT );
+                            SwapItem();
+                        }
                     }
                     break;
                 }
@@ -99,12 +102,11 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             targetHolder.itemUI.Bag.items[ targetHolder.itemUI.Index ] = tempItem;
         }
     }
-
     private void HandleBonusEffect( SlotHolder currentHolder , SlotHolder targetHolder , SlotType targetSlotType ) {
         var currentItem = currentHolder.itemUI.Bag.items[ currentHolder.itemUI.Index ];
 
         // 如果当前物品没有特殊效果，直接返回
-        if (currentItem.itemData == null || currentItem.itemData.bonusEffect == null) {
+        if (currentItem.itemData == null) {
             Debug.Log( 1 );
             return;
         }
@@ -120,6 +122,27 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             currentItem.itemData.ApplyBonusEffect();
             Debug.Log( $"触发 {currentItem.itemData.itemName} 的特殊效果" );
         }
+
     }
 
+    private bool foundSame( SlotHolder targetHolder , ItemData_SO currentItemData ) {
+        // 获取目标 Inventory 数据
+        var targetBag = targetHolder.itemUI.Bag;
+
+        // 检查目标栏位是否为空
+        if (targetBag == null) {
+            return false;
+        }
+
+        // 遍历目标栏位的所有物品
+        foreach (var item in targetBag.items) {
+            // 如果找到相同的 ItemData_SO，返回 true
+            if (item.itemData == currentItemData) {
+                return true;
+            }
+        }
+
+        // 如果没有找到相同的 ItemData_SO，返回 false
+        return false;
+    }
 }

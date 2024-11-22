@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT }
@@ -33,6 +34,6 @@ public class SlotHolder : MonoBehaviour {
 
         var item = itemUI.Bag.items[ itemUI.Index ];
         itemUI.SetupItemUI( item.itemData , item.amount );
-    }
+     }
 }
 
