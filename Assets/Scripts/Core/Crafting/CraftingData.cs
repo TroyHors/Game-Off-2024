@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu( fileName = "New CraftingData" , menuName = "Crafting/Crafting Data" )]
+[CreateAssetMenu( fileName = "New CraftingData" , menuName = "Interact/Crafting Data" )]
 public class CraftingData_SO : InventoryData_SO {
     public InventoryData_SO resultSlot; // 合成结果的栏位数据
 

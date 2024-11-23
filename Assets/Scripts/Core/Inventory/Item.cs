@@ -11,6 +11,9 @@ public class ItemData_SO : ScriptableObject {
     public int itemAmount;
     public int maxStack;
     public bool stackable;
+    [Range( 1 , 3 )]
+    public int baitsLevel;
+    public ItemData_SO targetFish;
     [TextArea]
     public string description = "";
 

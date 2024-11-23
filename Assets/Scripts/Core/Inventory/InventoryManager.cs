@@ -17,6 +17,7 @@ public class InventoryManager : Singleton<InventoryManager> {
     public InventoryData_SO resultData_B;
     public CraftingData_SO craftingData;
     public CraftingData_SO blendingData;
+    public FishingData_SO fishingData;
     [Header( "Containers" )]
     public ContainerUI inventoryUI;
     public ContainerUI equipmentUI;
@@ -24,6 +25,7 @@ public class InventoryManager : Singleton<InventoryManager> {
     public ContainerUI blendingUI;
     public ContainerUI resultUI_C;
     public ContainerUI resultUI_B;
+    public ContainerUI fishingUI;
     [Header( "Drag Canvas" )]
     public Canvas dragCanvas;
     public DragData currentDrag;
@@ -34,6 +36,7 @@ public class InventoryManager : Singleton<InventoryManager> {
         resultUI_C.RefreshUI();
         resultUI_B.RefreshUI();
         equipmentUI.RefreshUI();    
+        fishingUI.RefreshUI();  
     }
     public bool CheckInInventoryUI( Vector3 position ) {
         for (int i = 0 ; i < inventoryUI.slotHolders.Length ; i++) {
@@ -72,6 +75,17 @@ public class InventoryManager : Singleton<InventoryManager> {
     public bool CheckInequipmentUI( Vector3 position ) {
         for (int i = 0 ; i < equipmentUI.slotHolders.Length ; i++) {
             RectTransform t = equipmentUI.slotHolders[ i ].transform as RectTransform;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint( t , position )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public bool CheckInfishingUI( Vector3 position ) {
+        for (int i = 0 ; i < fishingUI.slotHolders.Length ; i++) {
+            RectTransform t = fishingUI.slotHolders[ i ].transform as RectTransform;
 
             if (RectTransformUtility.RectangleContainsScreenPoint( t , position )) {
                 return true;

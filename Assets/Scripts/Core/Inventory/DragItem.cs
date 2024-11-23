@@ -33,8 +33,8 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             if (InventoryManager.Instance.CheckInInventoryUI( eventData.position ) || 
                 InventoryManager.Instance.CheckInCraftingUI( eventData.position ) ||
                 InventoryManager.Instance.CheckInblendingUI(eventData.position) ||
-                InventoryManager.Instance.CheckInequipmentUI(eventData.position)){ 
-
+                InventoryManager.Instance.CheckInequipmentUI(eventData.position) ||
+                InventoryManager.Instance.CheckInfishingUI(eventData.position)){
                 if (eventData.pointerEnter.gameObject.GetComponent<SlotHolder>()) {
                     targetHolder = eventData.pointerEnter.gameObject.GetComponent<SlotHolder>();
                 } else {
@@ -63,7 +63,6 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
                     case SlotType.RESULT_B:
                     HandleBonusEffect( currentHolder , targetHolder , SlotType.RESULT_B );
-
                     break;
 
                     case SlotType.EQUIPMENT:
@@ -72,6 +71,12 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                             HandleBonusEffect( currentHolder , targetHolder , SlotType.EQUIPMENT );
                             SwapItem();
                         }
+                    }
+                    break;
+                    case SlotType.BAITS:
+                    if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Bait) {
+                        HandleBonusEffect( currentHolder , targetHolder , SlotType.BAITS );
+                        SwapItem();
                     }
                     break;
                 }
@@ -114,13 +119,11 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         // 如果移出 SlotType.EQUIPMENT，则移除效果
         if (currentHolder.slotType == SlotType.EQUIPMENT && targetSlotType != SlotType.EQUIPMENT) {
             currentItem.itemData.RemoveBonusEffect();
-            Debug.Log( $"移除 {currentItem.itemData.itemName} 的特殊效果" );
         }
 
         // 如果移入 SlotType.EQUIPMENT，则触发效果
         if (targetSlotType == SlotType.EQUIPMENT) {
             currentItem.itemData.ApplyBonusEffect();
-            Debug.Log( $"触发 {currentItem.itemData.itemName} 的特殊效果" );
         }
 
     }

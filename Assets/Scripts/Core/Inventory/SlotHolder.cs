@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT }
+public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT, BAITS }
 
 public class SlotHolder : MonoBehaviour {
     public SlotType slotType;
@@ -28,6 +28,9 @@ public class SlotHolder : MonoBehaviour {
             break;
             case SlotType.EQUIPMENT:
             itemUI.Bag = InventoryManager.Instance.equipmentData;
+            break;  
+            case SlotType.BAITS:
+            itemUI.Bag = InventoryManager.Instance.fishingData;
             break;
 
         }
