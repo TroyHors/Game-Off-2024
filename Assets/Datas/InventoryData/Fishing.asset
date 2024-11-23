@@ -12,9 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8fdfb83ace946428fa43f33510cdaf, type: 3}
   m_Name: Fishing
   m_EditorClassIdentifier: 
-  items: []
-  baitsArea: {fileID: 0}
-  resultSlot: {fileID: 0}
-  categoryLv1: []
-  categoryLv2: []
-  categoryLv3: []
+  items:
+  - itemData: {fileID: 0}
+    amount: 0
+  baitsArea: {fileID: 11400000}
+  categoryLv1:
+  - {fileID: 11400000, guid: 74e824067333a3943931e9fe62f459a3, type: 2}
+  - {fileID: 11400000, guid: 4f8e09a24ebd48641801effacbc56cc0, type: 2}
+  - {fileID: 11400000, guid: 20d3d1a7d1d98314f9485faed3ae5c86, type: 2}
+  categoryLv2:
+  - {fileID: 11400000, guid: 20fb59afd6a10dd47a0fec06376ac438, type: 2}
+  - {fileID: 11400000, guid: 4f8e09a24ebd48641801effacbc56cc0, type: 2}
+  - {fileID: 11400000, guid: a49a6668e3683b14592a59823c20bc95, type: 2}
+  categoryLv3:
+  - {fileID: 11400000, guid: 2f80acf4671287f44b67178cb56f9d9e, type: 2}
+  - {fileID: 11400000, guid: b955ab8aa8afb5e46b684c464d5d98f5, type: 2}
+  - {fileID: 11400000, guid: d151ba72cfc0aee48bb269b2676bdc45, type: 2}

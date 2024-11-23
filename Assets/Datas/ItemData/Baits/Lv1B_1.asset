@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ecdd0228190584286a2f6fb4f615d2, type: 3}
+  m_Name: Lv1B_1
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemName: Lv1B_1
+  itemIcon: {fileID: 0}
+  itemAmount: 1
+  maxStack: 100
+  stackable: 1
+  baitsLevel: 1
+  targetFish: {fileID: 11400000, guid: 74e824067333a3943931e9fe62f459a3, type: 2}
+  description: 
+  bonusEffect: {fileID: 0}
