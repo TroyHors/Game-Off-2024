@@ -4,7 +4,6 @@ using UnityEngine;
 [CreateAssetMenu( fileName = "New CraftingData" , menuName = "Interact/Crafting Data" )]
 public class CraftingData_SO : InventoryData_SO {
     public InventoryData_SO resultSlot; // 合成结果的栏位数据
-
     // 遍历所有配方，找到第一个符合的配方
     public Recipe FindMatchingRecipe( List<Recipe> recipes ) {
         foreach (var recipe in recipes) {
@@ -35,33 +34,36 @@ public class CraftingData_SO : InventoryData_SO {
 
     // 执行合成逻辑
     public void Craft( Recipe recipe ) {
-        if (!CanCraft( recipe )) return;
         foreach (var resultItem in resultSlot.items) {
             if (resultItem.itemData != null) // 结果栏已有物品
             {
                 if (!recipe.resultItem.stackable) return;
             }
         }
-        // 消耗材料
-        foreach (var ingredient in recipe.ingredients) {
-            foreach (var item in items) {
-                if (item.itemData == ingredient.itemData) {
-                    item.amount -= ingredient.requiredAmount;
-                    if (item.amount <= 0)
-                        item.itemData = null; // 清空材料数据
-                    break;
+        if (!CanCraft( recipe )) {
+            return;
+        }
+        if (CanCraft( recipe )) {
+            // 消耗材料
+            foreach (var ingredient in recipe.ingredients) {
+                foreach (var item in items) {
+                    if (item.itemData == ingredient.itemData) {
+                        item.amount -= ingredient.requiredAmount;
+                        if (item.amount <= 0)
+                            item.itemData = null; // 清空材料数据
+                        break;
+                    }
                 }
             }
+
+            // 添加合成结果到结果栏
+            resultSlot.AddItem( recipe.resultItem , recipe.resultAmount );
+            InventoryManager.Instance.craftingUI.RefreshUI(); // 更新合成区域的UI
+            InventoryManager.Instance.inventoryUI.RefreshUI(); // 更新背包的UI
+            InventoryManager.Instance.blendingUI.RefreshUI();
+            InventoryManager.Instance.resultUI_C.RefreshUI();
+            InventoryManager.Instance.resultUI_B.RefreshUI();
+            Debug.Log( "合成成功: " );
         }
-
-        // 添加合成结果到结果栏
-        resultSlot.AddItem( recipe.resultItem , recipe.resultAmount );
-        InventoryManager.Instance.craftingUI.RefreshUI(); // 更新合成区域的UI
-       InventoryManager.Instance.inventoryUI.RefreshUI(); // 更新背包的UI
-       InventoryManager.Instance.blendingUI.RefreshUI();
-       InventoryManager.Instance .resultUI_C.RefreshUI();
-       InventoryManager.Instance. resultUI_B.RefreshUI();
-        Debug.Log( "合成成功: "  );
-
     }
 }

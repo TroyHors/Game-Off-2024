@@ -26,6 +26,7 @@ public class InventoryManager : Singleton<InventoryManager> {
     public ContainerUI resultUI_C;
     public ContainerUI resultUI_B;
     public ContainerUI fishingUI;
+
     [Header( "Drag Canvas" )]
     public Canvas dragCanvas;
     public DragData currentDrag;
@@ -36,7 +37,9 @@ public class InventoryManager : Singleton<InventoryManager> {
         resultUI_C.RefreshUI();
         resultUI_B.RefreshUI();
         equipmentUI.RefreshUI();    
-        fishingUI.RefreshUI();  
+        fishingUI.RefreshUI();
+
+
     }
     public bool CheckInInventoryUI( Vector3 position ) {
         for (int i = 0 ; i < inventoryUI.slotHolders.Length ; i++) {

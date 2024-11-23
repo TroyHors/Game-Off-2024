@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CraftingUI : MonoBehaviour {
     public Button craftButton;
     public List<Recipe> allRecipes; // 所有配方列表
     public CraftingData_SO craftingData;
+    
     public void TryCraft() {
         // 寻找符合的配方
         Recipe matchingRecipe = craftingData.FindMatchingRecipe( allRecipes );
@@ -13,7 +15,7 @@ public class CraftingUI : MonoBehaviour {
         if (matchingRecipe != null) {
             craftingData.Craft( matchingRecipe );
         } else {
-            Debug.Log( "没有符合的配方！" );
+            return;
         }
     }
     void Start() {

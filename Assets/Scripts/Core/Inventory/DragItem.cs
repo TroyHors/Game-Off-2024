@@ -57,8 +57,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     break;
 
                     case SlotType.BLEND:
-                    HandleBonusEffect( currentHolder , targetHolder , SlotType.BLEND );
-                    SwapItem();
+                    if (currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Bait || currentItemUI.Bag.items[ currentItemUI.Index ].itemData.itemType == ItemType.Fish) {
+                        HandleBonusEffect( currentHolder , targetHolder , SlotType.BLEND );
+                        SwapItem();
+                    }   
                     break;
 
                     case SlotType.RESULT_B:
