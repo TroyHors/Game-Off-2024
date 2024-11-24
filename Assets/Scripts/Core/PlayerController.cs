@@ -1,12 +1,15 @@
 // PlayerController.cs
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public static PlayerController Instance; // 单例实例
 
+    public string tilemapTag = "Tilemap"; // Tilemap 的 Tag，用于动态获取
     public float moveDelay = 0.2f; // 移动的延迟，防止连续移动过快
     public Tilemap tilemap; // 引用Tilemap组件
     public int moveDistance = 1;
@@ -28,29 +31,70 @@ public class PlayerController : MonoBehaviour {
     public int currentMutation = 0; // 当前 Mutation 值
     public List<int> mutationMaxValues = new List<int> { 100 , 200 , 300 , 400 , 500 }; // 每个 Level 的最大值
 
+    [Header( "UI Elements" )]
+    public Slider hungerBar; // 饱食度条
+    public Slider mutationBar; // Mutation 条
+    public TextMeshProUGUI mutationText; // Mutation 等级文本
+
+
     void Start() {
         if (tilemap == null) {
             Debug.LogError( "Tilemap reference is missing!" );
         }
         if (Instance == null) {
-            Instance = this; // 设置单例
+            Instance = this;
+            DontDestroyOnLoad( gameObject ); // 保持跨场景不销毁
         } else {
-            Debug.LogError( "Multiple PlayerController instances detected!" );
+            Destroy( gameObject ); // 避免重复实例
         }
+
+        FindTilemapByTag();
 
         currentHunger = maxHunger; // 初始化饱食度为最大值
         currentMutation = 0; // 初始化 Mutation 为零
+
+        // 初始化 UI
+        if (hungerBar != null) {
+            hungerBar.maxValue = maxHunger;
+            hungerBar.value = currentHunger;
+        }
+
+        if (mutationBar != null) {
+            mutationBar.maxValue = mutationMaxValues[ mutationLevel - 1 ];
+            mutationBar.value = currentMutation;
+        }
+
+        if (mutationText != null) {
+            mutationText.text = $"Mutation: Lv{mutationLevel}";
+        }
     }
 
     void Update() {
+        if (tilemap == null) {
+            FindTilemapByTag();
+        }
+
         HandleMovement(); // 处理玩家的离散移动
         HandleInteraction(); // 处理交互
         if (Input.GetKeyDown( KeyCode.B )) {
             ispoen = !ispoen;
             inventoryUI.SetActive( ispoen );
         }
+        UpdateHungerBar();
+        UpdateMutationBar();
     }
 
+    private void FindTilemapByTag() {
+        GameObject tilemapObject = GameObject.FindWithTag( tilemapTag );
+        if (tilemapObject != null) {
+            tilemap = tilemapObject.GetComponent<Tilemap>();
+            if (tilemap == null) {
+                Debug.LogError( "Tilemap component not found on object with tag: " + tilemapTag );
+            }
+        } else {
+            Debug.LogError( "Tilemap object not found with tag: " + tilemapTag );
+        }
+    }
     private void HandleMovement() {
         // 检查当前时间是否超过下次允许移动的时间
         if (Time.time < nextMoveTime) return;
@@ -128,7 +172,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void UpdateHunger(int amount) {
-        if(currentHunger == maxHunger) {
+        if(amount > 0 && currentHunger == maxHunger) {
             return;
         }
         if (currentHunger + amount <= maxHunger) {
@@ -146,5 +190,21 @@ public class PlayerController : MonoBehaviour {
     private void OnHungerDepleted() {
         Debug.Log( "Hunger is depleted! Add your logic here." );
         // 留空的方法，用于未来添加具体逻辑
+    }
+
+    private void UpdateHungerBar() {
+        if (hungerBar != null) {
+            hungerBar.value = currentHunger;
+        }
+    }
+
+    private void UpdateMutationBar() {
+        if (mutationBar != null) {
+            mutationBar.maxValue = mutationMaxValues[ mutationLevel - 1 ];
+            mutationBar.value = currentMutation;
+        }
+        if (mutationText != null) {
+            mutationText.text = $"Mutation: Lv{mutationLevel}";
+        }
     }
 }

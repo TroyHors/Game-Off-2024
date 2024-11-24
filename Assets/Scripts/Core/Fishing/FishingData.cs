@@ -89,6 +89,7 @@ public class FishingData_SO : InventoryData_SO {
 
         // 将选中的物品添加到背包
         InventoryManager.Instance.inventoryData.AddItem( selectedItem , 1 );
+        PlayerController.Instance.UpdateHunger( -7 );
         baitItem.amount -= 1;
         if (baitItem.amount <= 0) {
             baitItem.itemData = null; 

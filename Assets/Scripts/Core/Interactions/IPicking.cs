@@ -12,6 +12,7 @@ public class IPicking : MonoBehaviour, IInteractable {
         if (itemData != null) {
             if (InventoryManager.Instance != null) {
                 InventoryManager.Instance.inventoryData.AddItem( itemData , amount );
+                PlayerController.Instance.UpdateHunger( -3 );
                 InventoryManager.Instance.inventoryUI.RefreshUI();
                 InventoryManager.Instance.craftingUI.RefreshUI();
             } else {
