@@ -11,6 +11,7 @@ public class CraftingData_SO : InventoryData_SO {
                 return recipe; // 返回第一个符合的配方
             }
         }
+        Debug.Log( 1 );
         return null; // 如果没有配方匹配，返回 null
     }
 
