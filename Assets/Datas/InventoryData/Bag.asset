@@ -13,28 +13,28 @@ MonoBehaviour:
   m_Name: Bag
   m_EditorClassIdentifier: 
   items:
+  - itemData: {fileID: 11400000, guid: f06302a09f384d442a362231147c4feb, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 5603e7cafea6b1749995ed890cf3b7e3, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: e58ef82f3392f32468810320670934e8, type: 2}
+    amount: 50
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 11400000, guid: 323cb7e1c93ec0d43b8bb1924cae11bc, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: d151ba72cfc0aee48bb269b2676bdc45, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 4f8e09a24ebd48641801effacbc56cc0, type: 2}
+    amount: 41
   - itemData: {fileID: 0}
     amount: 0
   - itemData: {fileID: 0}
     amount: 0
   - itemData: {fileID: 0}
     amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
+  - itemData: {fileID: 11400000, guid: 20d3d1a7d1d98314f9485faed3ae5c86, type: 2}
+    amount: 46
   - itemData: {fileID: 0}
     amount: 0
   - itemData: {fileID: 0}

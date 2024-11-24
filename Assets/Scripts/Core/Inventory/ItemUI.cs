@@ -20,4 +20,8 @@ public class ItemUI : MonoBehaviour {
             icon.gameObject.SetActive( false );
         }
     }
+
+    public ItemData_SO GetItem() {
+        return Bag.items[Index].itemData;
+    }
 }

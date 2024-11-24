@@ -17,6 +17,17 @@ public class PlayerController : MonoBehaviour {
     private bool ispoen = false;
     private IInteractable nearbyInteractable = null; // 当前附近的可交互物品
 
+    // 饱食度相关
+    [Header( "Hunger Settings" )]
+    public int maxHunger = 100; // 饱食度最大值
+    public int currentHunger; // 当前饱食度
+
+    // Mutation 相关
+    [Header( "Mutation Settings" )]
+    public int mutationLevel = 1; // 当前 Mutation 等级
+    public int currentMutation = 0; // 当前 Mutation 值
+    public List<int> mutationMaxValues = new List<int> { 100 , 200 , 300 , 400 , 500 }; // 每个 Level 的最大值
+
     void Start() {
         if (tilemap == null) {
             Debug.LogError( "Tilemap reference is missing!" );
@@ -26,6 +37,9 @@ public class PlayerController : MonoBehaviour {
         } else {
             Debug.LogError( "Multiple PlayerController instances detected!" );
         }
+
+        currentHunger = maxHunger; // 初始化饱食度为最大值
+        currentMutation = 0; // 初始化 Mutation 为零
     }
 
     void Update() {
@@ -90,5 +104,47 @@ public class PlayerController : MonoBehaviour {
         if (interactable != null && interactable.Equals( nearbyInteractable )) {
             nearbyInteractable = null;
         }
+    }
+
+    public void UpdateMutation( int amount ) {
+        // 增加或减少 Mutation
+        currentMutation += amount;
+
+        // 限制 Mutation 范围
+        if (currentMutation < 0) {
+            currentMutation = 0; // Mutation 最低为 0
+        }
+
+        // 检查是否达到当前 Level 的最大值
+        if (mutationLevel <= mutationMaxValues.Count && currentMutation >= mutationMaxValues[ mutationLevel - 1 ]) {
+            if (mutationLevel < mutationMaxValues.Count) {
+                currentMutation = 0; // 重新计数
+                mutationLevel++; // 进入下一 Level
+                Debug.Log( $"Mutation Level Up! New Level: {mutationLevel}" );
+            } else {
+                currentMutation = mutationMaxValues[ mutationLevel - 1 ];
+            }
+        }
+    }
+
+    public void UpdateHunger(int amount) {
+        if(currentHunger == maxHunger) {
+            return;
+        }
+        if (currentHunger + amount <= maxHunger) {
+            if(currentHunger + amount <= 0) {
+                OnHungerDepleted();
+            } else {
+                currentHunger = currentHunger + amount;
+            }
+        } else {
+            currentHunger = maxHunger;
+        }
+    }
+
+    // 饱食度为零时的逻辑
+    private void OnHungerDepleted() {
+        Debug.Log( "Hunger is depleted! Add your logic here." );
+        // 留空的方法，用于未来添加具体逻辑
     }
 }

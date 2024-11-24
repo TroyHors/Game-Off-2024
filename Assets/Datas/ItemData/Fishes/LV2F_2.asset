@@ -18,7 +18,8 @@ MonoBehaviour:
   itemAmount: 1
   maxStack: 100
   stackable: 1
+  description: 
   baitsLevel: 1
   targetFish: {fileID: 0}
-  description: 
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 11400000, guid: 547e28a384a9c4c46b37b3095422581e, type: 2}

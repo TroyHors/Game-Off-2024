@@ -2,12 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT, BAITS }
 
-public class SlotHolder : MonoBehaviour {
+public class SlotHolder : MonoBehaviour, IPointerClickHandler {
     public SlotType slotType;
     public ItemUI itemUI;
+
+    public void OnPointerClick( PointerEventData eventData ) {
+        if (eventData.clickCount >= 2) {
+            UseItem();
+        }
+     }
+
+    public void UseItem() {
+        if (itemUI != null) {
+            if (itemUI.GetItem().itemType == ItemType.Fish || itemUI.GetItem().itemType == ItemType.Bait) {
+                if (itemUI.Bag.items[itemUI.Index].amount > 0 && PlayerController.Instance.currentHunger < PlayerController.Instance.maxHunger) {
+                    PlayerController.Instance.UpdateHunger( itemUI.GetItem().foodsData.hunger );
+                    PlayerController.Instance.UpdateMutation( itemUI.GetItem().foodsData.mutation );
+                    itemUI.Bag.items[ itemUI.Index ].amount -= 1;
+                    if(itemUI.Bag.items[ itemUI.Index ].amount <= 0) {
+                        itemUI.Bag.items[ itemUI.Index ].itemData = null;
+                    }
+                }
+            }
+        }
+        UpdateItem();
+    }
 
     public void UpdateItem() {
         switch (slotType) {

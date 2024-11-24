@@ -11,17 +11,19 @@ public class ItemData_SO : ScriptableObject {
     public int itemAmount;
     public int maxStack;
     public bool stackable;
-    public float Hunger;
-    public float mutation;
-    [ Range( 1 , 3 )]
-    public int baitsLevel;
-    public ItemData_SO targetFish;
     [TextArea]
     public string description = "";
 
+    [Header("Baits")]
+    [ Range( 1 , 3 )]
+    public int baitsLevel;
+    public ItemData_SO targetFish;
 
+    [Header("Bonus")]
     public ItemBonusEffect bonusEffect;
 
+    [Header("Foods")]
+    public FoodsData_SO foodsData;
     // 应用特殊效果
     public void ApplyBonusEffect() {
         if (bonusEffect != null) {
