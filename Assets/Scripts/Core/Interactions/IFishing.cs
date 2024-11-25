@@ -7,11 +7,13 @@ using UnityEngine;
 public class IFishing : MonoBehaviour, IInteractable {
     public GameObject FishingUI; // 合成界面UI
     public GameObject inventoryUI;
+    public GameObject playerUI;
     public void Interact() {
         if (FishingUI != null) {
             bool isActive = FishingUI.activeSelf;
             FishingUI.SetActive( !isActive );
             inventoryUI.SetActive( !isActive );
+            playerUI.SetActive( isActive );
             // 暂停或恢复游戏
             Time.timeScale = isActive ? 1f : 0f;
         } else {
