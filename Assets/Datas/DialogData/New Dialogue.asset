@@ -13,25 +13,17 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   dialogPieces:
-  - ID: 00
-    image: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
-    text: hiiiiiiii
-    options: []
   - ID: 01
     image: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
-    text: Hello!
+    text: Hello
     options:
     - text: hello
       targetID: 02
       takeQuest: 0
     - text: No hello
-      targetID: 03
+      targetID: 
       takeQuest: 0
   - ID: 02
     image: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
     text: OK
-    options: []
-  - ID: 03
-    image: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
-    text: Alr
     options: []

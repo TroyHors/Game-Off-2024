@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotType: 3
   itemUI: {fileID: 5256668892022549954}
+  slots: {fileID: 568721876620348575}
 --- !u!1001 &166622640347972429
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,9 @@ public class InventoryManager : Singleton<InventoryManager> {
     public InventoryData_SO equipmentData;
     public InventoryData_SO resultData_C;
     public InventoryData_SO resultData_B;
+    public InventoryData_SO recipeInventoryData;
+    public InventoryData_SO ingredientInventoryData;
+    public InventoryData_SO resultInventoryData;
     public CraftingData_SO craftingData;
     public CraftingData_SO blendingData;
     public FishingData_SO fishingData;
@@ -26,10 +29,17 @@ public class InventoryManager : Singleton<InventoryManager> {
     public ContainerUI resultUI_C;
     public ContainerUI resultUI_B;
     public ContainerUI fishingUI;
-
+    public ContainerUI recipeInventoryUI; // 配方物品显示的 Inventory
+    public ContainerUI ingredientInventoryUI; // 配方详情显示的 Inventory
+    public ContainerUI resultInventoryUI; // 配方详情显示的 Inventory
     [Header( "Drag Canvas" )]
     public Canvas dragCanvas;
     public DragData currentDrag;
+
+    [Header("Tooltips")]
+    public ItemTooltip tooltip;
+    public Transform tooltipTransform;
+    public RectTransform tooltipRectTransform;
     void Start() {
         inventoryUI.RefreshUI();
         craftingUI.RefreshUI();
@@ -38,7 +48,9 @@ public class InventoryManager : Singleton<InventoryManager> {
         resultUI_B.RefreshUI();
         equipmentUI.RefreshUI();    
         fishingUI.RefreshUI();
-
+        recipeInventoryUI.RefreshUI();
+        ingredientInventoryUI.RefreshUI(); 
+        resultInventoryUI.RefreshUI();
 
     }
     public bool CheckInInventoryUI( Vector3 position ) {
