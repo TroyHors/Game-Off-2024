@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown( KeyCode.B )) {
             ispoen = !ispoen;
             inventoryUI.SetActive( ispoen );
-            PlayerUI.SetActive( !ispoen );
         }
         UpdateHungerBar();
         UpdateMutationBar();
