@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemName: Lv1B_1
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -925589976, guid: 169d53023367f684784ce51208c27fa1, type: 3}
   itemAmount: 1
   maxStack: 100
   stackable: 1
+  description: 
   baitsLevel: 1
   targetFish: {fileID: 11400000, guid: 74e824067333a3943931e9fe62f459a3, type: 2}
-  description: 
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 0}
