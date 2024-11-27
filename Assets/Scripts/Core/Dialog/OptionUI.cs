@@ -4,27 +4,27 @@ using UnityEngine.UI;
 
 public class OptionUI : MonoBehaviour {
     public TextMeshProUGUI optionText;
-    private Button thisButton;
-    private string nextPieceID;
+    private Button optionButton;
+    private string targetNodeID;
 
     private void Awake() {
-        thisButton = GetComponent<Button>();
-        thisButton.onClick.AddListener( OnOptionClicked );
+        optionButton = GetComponent<Button>();
+        optionButton.onClick.AddListener( OnOptionClicked );
     }
 
-    public void UpdateOption( DialogPiece piece , DialogOptions option ) {
+    public void UpdateOption( StoryNode node , StoryOption option ) {
         optionText.text = option.text;
-        nextPieceID = option.targetID;
+        targetNodeID = option.targetID;
     }
 
     private void OnOptionClicked() {
-        if (string.IsNullOrEmpty( nextPieceID )) {
-            DialogUI.Instance.EndDialog();
-        } else if (DialogUI.Instance.currentData.dialogIndex.ContainsKey( nextPieceID )) {
-            DialogUI.Instance.UpdateMainDialog( DialogUI.Instance.currentData.dialogIndex[ nextPieceID ] );
-            DialogUI.Instance.currentPieceID = nextPieceID;
+        if (string.IsNullOrEmpty( targetNodeID )) {
+            StoryManager.Instance.EndStory();
+        } else if (StoryManager.Instance.currentStoryData.storyIndex.ContainsKey( targetNodeID )) {
+            StoryManager.Instance.currentNodeID = targetNodeID;
+            StoryManager.Instance.DisplayNode( StoryManager.Instance.currentStoryData.storyIndex[ targetNodeID ] );
         } else {
-            DialogUI.Instance.EndDialog();
+            StoryManager.Instance.EndStory();
         }
     }
 }
