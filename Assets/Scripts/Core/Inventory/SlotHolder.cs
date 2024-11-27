@@ -94,7 +94,7 @@ public class SlotHolder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void OnPointerEnter( PointerEventData eventData ) {
         if (itemUI.GetItem() != null) {
-            InventoryManager.Instance.tooltip.SetUpTooltip(itemUI.GetItem());
+            InventoryManager.Instance.tooltip.SetUpTooltip(itemUI.GetItem(), itemUI.Bag);
             InventoryManager.Instance.tooltip.gameObject.SetActive(true);
             InventoryManager.Instance.tooltipTransform.position = new Vector3( slots.transform.position.x - 200 , slots.transform.position.y , slots.transform.position.z );          
         }
