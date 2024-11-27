@@ -24,6 +24,8 @@ public class ItemData_SO : ScriptableObject {
 
     [Header("Foods")]
     public FoodsData_SO foodsData;
+
+
     // 应用特殊效果
     public void ApplyBonusEffect() {
         if (bonusEffect != null) {

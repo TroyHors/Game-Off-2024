@@ -83,6 +83,10 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                     break;
                     case SlotType.SHOWING:
                     break;
+                    case SlotType.RR:
+                    break;
+                    case SlotType.RI:
+                    break;
                 }
                 currentHolder.UpdateItem();
                 targetHolder.UpdateItem();

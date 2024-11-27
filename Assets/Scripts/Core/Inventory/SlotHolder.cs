@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT, BAITS, SHOWING }
+public enum SlotType { BAG, CRAFT, RESULT_C, BLEND, RESULT_B, EQUIPMENT, BAITS, SHOWING, RI, RR }
 
 public class SlotHolder : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
     public SlotType slotType;
@@ -41,10 +41,12 @@ public class SlotHolder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 if (itemUI.Bag.items[itemUI.Index].amount > 0 && PlayerController.Instance.currentHunger < PlayerController.Instance.maxHunger) {
                     PlayerController.Instance.UpdateHunger( itemUI.GetItem().foodsData.hunger );
                     PlayerController.Instance.UpdateMutation( itemUI.GetItem().foodsData.mutation );
+                    itemUI.Bag.AddItem( itemUI.GetItem().foodsData.returnItem , 1 );
                     itemUI.Bag.items[ itemUI.Index ].amount -= 1;
                     if(itemUI.Bag.items[ itemUI.Index ].amount <= 0) {
                         itemUI.Bag.items[ itemUI.Index ].itemData = null;
                     }
+                    InventoryManager.Instance.inventoryUI.RefreshUI();
                 }
             }
         }
@@ -76,6 +78,12 @@ public class SlotHolder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             break;
             case SlotType.SHOWING:
             itemUI.Bag = InventoryManager.Instance.recipeInventoryData;
+            break;
+            case SlotType.RR:
+            itemUI.Bag= InventoryManager.Instance.resultInventoryData;
+            break;
+            case SlotType.RI:
+            itemUI.Bag = InventoryManager.Instance.ingredientInventoryData;
             break;
 
         }

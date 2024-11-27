@@ -6,4 +6,5 @@ public class FoodsData_SO : ScriptableObject
 {
     public int mutation;
     public int hunger;
+    public ItemData_SO returnItem;
 }

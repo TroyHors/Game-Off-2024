@@ -27,15 +27,12 @@ public class PlayerController : MonoBehaviour {
 
     // Mutation 相关
     [Header( "Mutation Settings" )]
-    public int mutationLevel = 1; // 当前 Mutation 等级
     public int currentMutation = 0; // 当前 Mutation 值
-    public List<int> mutationMaxValues = new List<int> { 100 , 200 , 300 , 400 , 500 }; // 每个 Level 的最大值
+    public List<int> mutationThresholds = new List<int> { 0 , 100 , 200 , 400 , 500 }; // 每一级的分界点
 
     [Header( "UI Elements" )]
     public Slider hungerBar; // 饱食度条
-    public Slider mutationBar; // Mutation 条
-    public TextMeshProUGUI mutationText; // Mutation 等级文本
-
+    public Slider mutationBar; // Mutation 
 
     void Start() {
         if (tilemap == null) {
@@ -60,12 +57,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (mutationBar != null) {
-            mutationBar.maxValue = mutationMaxValues[ mutationLevel - 1 ];
+            mutationBar.maxValue = mutationThresholds[ mutationThresholds.Count - 1 ];
             mutationBar.value = currentMutation;
-        }
-
-        if (mutationText != null) {
-            mutationText.text = $"Mutation: Lv{mutationLevel}";
         }
     }
 
@@ -149,26 +142,27 @@ public class PlayerController : MonoBehaviour {
             nearbyInteractable = null;
         }
     }
-
-    public void UpdateMutation( int amount ) {
-        // 增加或减少 Mutation
-        currentMutation += amount;
-
-        // 限制 Mutation 范围
-        if (currentMutation < 0) {
-            currentMutation = 0; // Mutation 最低为 0
-        }
-
-        // 检查是否达到当前 Level 的最大值
-        if (mutationLevel <= mutationMaxValues.Count && currentMutation >= mutationMaxValues[ mutationLevel - 1 ]) {
-            if (mutationLevel < mutationMaxValues.Count) {
-                currentMutation = 0; // 重新计数
-                mutationLevel++; // 进入下一 Level
-                Debug.Log( $"Mutation Level Up! New Level: {mutationLevel}" );
-            } else {
-                currentMutation = mutationMaxValues[ mutationLevel - 1 ];
+    private int GetCurrentMutationLevelIndex() {
+        for (int i = mutationThresholds.Count - 1 ; i >= 0 ; i--) {
+            if (currentMutation >= mutationThresholds[ i ]) {
+                return i;
             }
         }
+        return 0; // 默认第一级
+    }
+
+        public void UpdateMutation( int amount ) {
+        int currentLevelIndex = GetCurrentMutationLevelIndex();
+
+        currentMutation += amount;
+
+        if (currentMutation < mutationThresholds[ currentLevelIndex ]) {
+            currentMutation = mutationThresholds[ currentLevelIndex ]; // 保证 Mutation 不低于当前等级分界点
+        } else if (currentMutation > mutationThresholds[ mutationThresholds.Count - 1 ]) {
+            currentMutation = mutationThresholds[ mutationThresholds.Count - 1 ]; // 不超过最大值
+        }
+
+        Debug.Log( $"Current Mutation: {currentMutation}" );
     }
 
     public void UpdateHunger(int amount) {
@@ -200,11 +194,8 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateMutationBar() {
         if (mutationBar != null) {
-            mutationBar.maxValue = mutationMaxValues[ mutationLevel - 1 ];
+            mutationBar.maxValue = mutationThresholds[ mutationThresholds.Count - 1 ];
             mutationBar.value = currentMutation;
-        }
-        if (mutationText != null) {
-            mutationText.text = $"Mutation: Lv{mutationLevel}";
         }
     }
 }
