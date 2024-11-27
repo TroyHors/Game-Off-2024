@@ -6,6 +6,8 @@ public class DialogPiece
 {
     public string ID;
     public Sprite image;
+    public string targetID;
+
     [TextArea]
     public string text;
 

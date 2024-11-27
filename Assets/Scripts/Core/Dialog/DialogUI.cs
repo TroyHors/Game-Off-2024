@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class DialogUI : Singleton<DialogUI> {
     [Header( "Basic Elements" )]
@@ -13,16 +12,15 @@ public class DialogUI : Singleton<DialogUI> {
     public GameObject PlayerUI;
     public bool isTalking = false;
 
-    [Header("Options")]
+    [Header( "Options" )]
     public RectTransform optionPanel;
     public OptionUI optionPrefab;
 
     [Header( "Data" )]
     public DialogsData_SO currentData;
-    public int currentIndex = 0;
+    public string currentPieceID;
 
     private void Update() {
-        // 检测鼠标左键点击，用于推进对话
         if (isTalking && Input.GetMouseButtonDown( 0 )) {
             AdvanceDialog();
         }
@@ -30,15 +28,16 @@ public class DialogUI : Singleton<DialogUI> {
 
     public void UpdateDialogData( DialogsData_SO data ) {
         currentData = data;
-        currentIndex = 0;
+        if (data.dialogPieces.Count > 0) {
+            currentPieceID = data.dialogPieces[ 0 ].ID; // 初始对话
+        }
     }
 
     public void UpdateMainDialog( DialogPiece piece ) {
         isTalking = true;
-        // 显示对话面板，隐藏玩家UI
         dialogPanel.SetActive( isTalking );
         PlayerUI.SetActive( !isTalking );
-        // 显示头像（如果有）
+
         if (piece.image != null) {
             icon.enabled = true;
             icon.sprite = piece.image;
@@ -46,43 +45,46 @@ public class DialogUI : Singleton<DialogUI> {
             icon.enabled = false;
         }
 
-        // 设置对话文本
         mainText.text = piece.text;
         CreateOptions( piece );
     }
 
     public void AdvanceDialog() {
-        // 当前对话段
-        DialogPiece currentPiece = currentData.dialogPieces[ currentIndex ];
-
-        // 判断当前对话是否有选项
-        if ( currentPiece.options.Count > 0) {
-            return; // 存在选项时，不自动推进
+        if (currentData == null || string.IsNullOrEmpty( currentPieceID )) {
+            EndDialog();
+            return;
         }
 
-        // 判断是否还有下一段对话
-        if (currentIndex + 1 < currentData.dialogPieces.Count) {
-            DialogPiece nextPiece = currentData.dialogPieces[ currentIndex ];
-            UpdateMainDialog( nextPiece );
-            currentIndex++;
+        var currentPiece = currentData.dialogIndex[ currentPieceID ];
+
+        if (currentPiece.options.Count > 0) {
+            return; // 如果有选项，等待玩家选择
+        }
+
+        if (!string.IsNullOrEmpty( currentPiece.targetID ) && currentData.dialogIndex.ContainsKey( currentPiece.targetID )) {
+            UpdateMainDialog( currentData.dialogIndex[ currentPiece.targetID ] );
+            currentPieceID = currentPiece.targetID;
         } else {
-            // 没有更多对话，结束对话
-            isTalking = false; // 对话结束
-            dialogPanel.SetActive( isTalking ); // 关闭对话UI
-            PlayerUI.SetActive( !isTalking ); // 恢复玩家UI
+            EndDialog();
         }
     }
 
-    void CreateOptions( DialogPiece piece ) { 
-        if( optionPanel.childCount > 0) {
-            for (int i = 0 ; i < optionPanel.childCount ; i++) { 
-                Destroy(optionPanel.GetChild(i).gameObject);
+    public  void EndDialog() {
+        isTalking = false;
+        dialogPanel.SetActive( isTalking );
+        PlayerUI.SetActive( !isTalking );
+    }
+
+    private void CreateOptions( DialogPiece piece ) {
+        if (optionPanel.childCount > 0) {
+            for (int i = 0 ; i < optionPanel.childCount ; i++) {
+                Destroy( optionPanel.GetChild( i ).gameObject );
             }
         }
 
-        for(int i = 0 ;i < piece.options.Count; i++) {
-            var option = Instantiate( optionPrefab, optionPanel );
-            option.UpdateOption(piece,piece.options[i]);   
+        foreach (var option in piece.options) {
+            var optionUI = Instantiate( optionPrefab , optionPanel );
+            optionUI.UpdateOption( piece , option );
         }
     }
 }
