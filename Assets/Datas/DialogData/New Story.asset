@@ -12,4 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New Story
   m_EditorClassIdentifier: Assembly-CSharp::StoryData_SO
-  storyNodes: []
+  storyNodes:
+  - ID: 00
+    targetID: 01
+    backgroundImage: {fileID: -925589976, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+    characterImage: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+    isCutscene: 1
+    text: we
+    options: []
+  - ID: 01
+    targetID: 02
+    backgroundImage: {fileID: -925589976, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+    characterImage: {fileID: -1799836322, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+    isCutscene: 0
+    text: hi
+    options:
+    - text: hi
+      targetID: 02
+    - text: ...
+      targetID: 
+  - ID: 02
+    targetID: 
+    backgroundImage: {fileID: 0}
+    characterImage: {fileID: 1443630088, guid: 169d53023367f684784ce51208c27fa1, type: 3}
+    isCutscene: 0
+    text: fefe
+    options: []

@@ -24,3 +24,4 @@ MonoBehaviour:
   - itemData: {fileID: 0}
     amount: 0
   resultSlot: {fileID: 11400000, guid: 4487486dee1944c4ab01cf08cd6070e5, type: 2}
+  noConsumptionChance: 0

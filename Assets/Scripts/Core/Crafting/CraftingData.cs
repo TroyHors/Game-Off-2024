@@ -1,9 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu( fileName = "New CraftingData" , menuName = "Interact/Crafting Data" )]
 public class CraftingData_SO : InventoryData_SO {
+    public static CraftingData_SO Instance;
     public InventoryData_SO resultSlot; // 合成结果的栏位数据
+    [Range( 0 , 100 )] public int noConsumptionChance = 0; // 不消耗物品的概率（0-100）
+
+    private void Awake() {
+        Instance = this;
+    }
     // 遍历所有配方，找到第一个符合的配方
     public Recipe FindMatchingRecipe( List<Recipe> recipes ) {
         foreach (var recipe in recipes) {
@@ -46,19 +53,24 @@ public class CraftingData_SO : InventoryData_SO {
         }
         if (CanCraft( recipe )) {
             // 消耗材料
-            foreach (var ingredient in recipe.ingredients) {
-                foreach (var item in items) {
-                    if (item.itemData == ingredient.itemData) {
-                        item.amount -= ingredient.requiredAmount;
-                        if (item.amount <= 0)
-                            item.itemData = null; // 清空材料数据
-                        break;
+            bool consumeItem = Random.Range( 0 , 100 ) >= noConsumptionChance;
+            if (consumeItem) {
+                foreach (var ingredient in recipe.ingredients) {
+                    foreach (var item in items) {
+                        if (item.itemData == ingredient.itemData) {
+                            item.amount -= ingredient.requiredAmount;
+                            if (item.amount <= 0)
+                                item.itemData = null; // 清空材料数据
+                            break;
+                        }
                     }
                 }
+            } else {
+                Debug.Log("was not consumed due to no-consumption chance!" );
             }
 
-            // 添加合成结果到结果栏
-            resultSlot.AddItem( recipe.resultItem , recipe.resultAmount );
+                // 添加合成结果到结果栏
+                resultSlot.AddItem( recipe.resultItem , recipe.resultAmount );
             InventoryManager.Instance.craftingUI.RefreshUI(); // 更新合成区域的UI
             InventoryManager.Instance.inventoryUI.RefreshUI(); // 更新背包的UI
             InventoryManager.Instance.blendingUI.RefreshUI();

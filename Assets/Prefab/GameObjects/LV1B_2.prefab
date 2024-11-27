@@ -144,5 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: e58ef82f3392f32468810320670934e8, type: 2}
-  amount: 50
+  amount: 0
   isPicking: 0

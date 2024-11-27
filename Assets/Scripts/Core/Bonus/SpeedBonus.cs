@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu( fileName = "AttackBoostEffect" , menuName = "Item Effects/Attack Boost" )]
-public class AttackBoostEffect : ItemBonusEffect {
+[CreateAssetMenu( fileName = "Speed+" , menuName = "Item Effects/Mobility/Speed+" )]
+public class SpeedBonus: ItemBonusEffect {
     public float fast = 0.1f;
     public float before = 0.2f;
 

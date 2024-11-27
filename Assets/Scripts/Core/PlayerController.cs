@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour {
     [Header( "Hunger Settings" )]
     public int maxHunger = 100; // 饱食度最大值
     public int currentHunger; // 当前饱食度
-
+    public int maxHBonus = 0;
+    public int addHBonus = 0;
+    [Range( 0 , 100 )] public int chance = 0;
     // Mutation 相关
     [Header( "Mutation Settings" )]
     public int currentMutation = 0; // 当前 Mutation 值
@@ -168,18 +170,28 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void UpdateHunger(int amount) {
-        if(amount > 0 && currentHunger == maxHunger) {
+        if(amount > 0 && currentHunger == maxHunger+maxHBonus) {
             return;
         }
-        if (currentHunger + amount <= maxHunger) {
-            if(currentHunger + amount <= 0) {
-                OnHungerDepleted();
-            } else {
-                currentHunger = currentHunger + amount;
-            }
+        if (currentHunger + amount <= 0) {
+            OnHungerDepleted();
         } else {
-            currentHunger = maxHunger;
+            if (amount < 0) {
+                bool update = Random.Range( 0 , 100 ) >= chance;
+                if (update) {
+                    currentHunger = currentHunger + amount;
+                } else {
+                    return;
+                }
+            } else {
+                if (currentHunger + amount + addHBonus < maxHunger + maxHBonus) {
+                    currentHunger = currentHunger + amount + addHBonus;
+                } else {
+                    currentHunger = maxHunger;
+                }
+            }
         }
+       
     }
 
     // 饱食度为零时的逻辑

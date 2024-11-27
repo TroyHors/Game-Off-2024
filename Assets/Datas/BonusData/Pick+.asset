@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f551f5a9e0642ff4292a6cced05cff29, type: 3}
-  m_Name: AttackBoostEffect
+  m_Script: {fileID: 11500000, guid: c044480bf7173cb4b8fd29661e858b39, type: 3}
+  m_Name: Pick+
   m_EditorClassIdentifier: 
-  attackBoostAmount: 10
+  amountBonus: 5
