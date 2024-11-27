@@ -25,7 +25,6 @@ public class IShowRecipe : MonoBehaviour, IInteractable {
     }
 
     private void LoadRecipesToInventory() {
-        Debug.Log( 1 );
         // 清空 RecipeInventory 数据
         foreach (var item in recipeInventoryData.items) {
             item.itemData = null;

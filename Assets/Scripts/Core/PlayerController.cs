@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     [Header( "UI Elements" )]
     public Slider hungerBar; // 饱食度条
     public Slider mutationBar; // Mutation 
+    public GameObject PlayerUI;
 
     void Start() {
         if (tilemap == null) {
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown( KeyCode.B )) {
             ispoen = !ispoen;
             inventoryUI.SetActive( ispoen );
+            PlayerUI.SetActive( !ispoen );
         }
         UpdateHungerBar();
         UpdateMutationBar();
