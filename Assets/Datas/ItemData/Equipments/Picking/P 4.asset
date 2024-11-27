@@ -21,5 +21,5 @@ MonoBehaviour:
   description: 
   baitsLevel: 1
   targetFish: {fileID: 0}
-  bonusEffect: {fileID: 11400000, guid: 4cbfc6c35da67374eb42921a83c543ae, type: 2}
+  bonusEffect: {fileID: 11400000, guid: 636ec66d9ddf9c843bf8b72afcb75f18, type: 2}
   foodsData: {fileID: 0}
