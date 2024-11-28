@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
     private float nextMoveTime = 0f; // 用于控制移动间隔
 
     public GameObject inventoryUI;
-    private bool ispoen = false;
     private IInteractable nearbyInteractable = null; // 当前附近的可交互物品
 
     // 饱食度相关
@@ -38,13 +37,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject PlayerUI;
     public GameObject panel;           
     public GameObject Teleports;
+    public GameObject Minimap;
     void Start() {
         if (tilemap == null) {
             Debug.LogError( "Tilemap reference is missing!" );
         }
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad( gameObject ); // 保持跨场景不销毁
         } else {
             Destroy( gameObject ); // 避免重复实例
         }
@@ -74,11 +73,14 @@ public class PlayerController : MonoBehaviour {
         HandleMovement(); // 处理玩家的离散移动
         HandleInteraction(); // 处理交互
         if (Input.GetKeyDown( KeyCode.B )) {
+            Minimap.SetActive( inventoryUI.activeSelf );
             inventoryUI.SetActive( !inventoryUI.activeSelf );
+
         }
         if( Input.GetKeyDown( KeyCode.M )) {
             if (TeleportManager.Instance.available) {
                 Teleports.SetActive( !panel.activeSelf );
+                PlayerUI.SetActive(panel.activeSelf );
             }
             panel.SetActive( !panel.activeSelf );
         }

@@ -20,7 +20,7 @@ public class StoryManager : Singleton<StoryManager> {
     public StoryData_SO currentStoryData;
     public string currentNodeID;
 
-    private bool isStoryActive = false;
+    public bool isStoryActive = false;
 
     private void Update() {
         // 鼠标点击推进剧情

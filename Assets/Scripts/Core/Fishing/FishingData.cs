@@ -47,7 +47,7 @@ public class FishingData_SO : InventoryData_SO {
             selectedCategory = categoryLv1;
         } else if (randomCategory < lv1Probability + lv2Probability) {
             selectedCategory = categoryLv2;
-        } else {
+        } else if(randomCategory < lv1Probability+lv2Probability+lv3Probability){
             selectedCategory = categoryLv3;
         }
 
