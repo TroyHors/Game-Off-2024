@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour {
     public Slider hungerBar; // 饱食度条
     public Slider mutationBar; // Mutation 
     public GameObject PlayerUI;
-
+    public GameObject panel;           
+    public GameObject Teleports;
     void Start() {
         if (tilemap == null) {
             Debug.LogError( "Tilemap reference is missing!" );
@@ -73,8 +74,13 @@ public class PlayerController : MonoBehaviour {
         HandleMovement(); // 处理玩家的离散移动
         HandleInteraction(); // 处理交互
         if (Input.GetKeyDown( KeyCode.B )) {
-            ispoen = !ispoen;
-            inventoryUI.SetActive( ispoen );
+            inventoryUI.SetActive( !inventoryUI.activeSelf );
+        }
+        if( Input.GetKeyDown( KeyCode.M )) {
+            if (TeleportManager.Instance.available) {
+                Teleports.SetActive( !panel.activeSelf );
+            }
+            panel.SetActive( !panel.activeSelf );
         }
         UpdateHungerBar();
         UpdateMutationBar();
@@ -201,6 +207,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateHungerBar() {
         if (hungerBar != null) {
+            hungerBar.maxValue = maxHunger;
             hungerBar.value = currentHunger;
         }
     }
@@ -211,4 +218,25 @@ public class PlayerController : MonoBehaviour {
             mutationBar.value = currentMutation;
         }
     }
+    public void TeleportTo( string teleportID ) {
+        // 获取目标传送点的位置
+        Vector3? targetPosition = TeleportManager.Instance.GetTeleportPosition( teleportID );
+
+        if (targetPosition.HasValue) {
+            if(targetPosition != transform.position) {
+                // 如果找到对应位置，设置玩家坐标
+                if (TeleportManager.Instance.currentTeleportCount > 0) {
+                    transform.position = targetPosition.Value;
+                    TeleportManager.Instance.currentTeleportCount--;
+                } else {
+                    Debug.Log( "Teleport failed: No more teleports available." );
+                }
+            } else {
+                Debug.Log( "Teleport failed: Same Position." );
+            }
+        } else {
+            Debug.LogWarning( "Teleport failed: Invalid ID." );
+        }
+    }
+    
 }

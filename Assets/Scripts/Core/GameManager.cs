@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
         } else {
             Destroy( gameObject ); // 避免重复实例
         }
-        dayCount = 1;
+        dayCount = 0;
     }
 
     private void Start() {

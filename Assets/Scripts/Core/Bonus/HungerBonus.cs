@@ -7,11 +7,11 @@ public class HungerBonus : ItemBonusEffect {
 
     public override void ApplyEffect() {
         PlayerController.Instance.addHBonus = addBonus;
-        PlayerController.Instance.maxHBonus = maxBonus;
+        PlayerController.Instance.maxHunger = 100 + maxBonus;
     }
 
     public override void RemoveEffect() {
         PlayerController.Instance.addHBonus = 0;
-        PlayerController.Instance.maxHBonus = 0;
+        PlayerController.Instance.maxHunger = 100;
     }
 }

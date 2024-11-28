@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class InventoryManager : Singleton<InventoryManager> {
     public class DragData {
         public SlotHolder originalHolder;
         public RectTransform originalParent;
     }
+
+    public List<ItemData_SO> EQs = new List<ItemData_SO>();
     // TODO: 最后添加模版用于保存数据
     [Header( "Inventory Data" )]
     public InventoryData_SO inventoryData;
@@ -53,6 +56,22 @@ public class InventoryManager : Singleton<InventoryManager> {
         resultInventoryUI.RefreshUI();
 
     }
+    private void Update() {
+        foreach (var item in EQs) {
+            if (item != null && item.itemType == ItemType.Eq) {
+                BonusFound( item );
+            }
+        }
+    }
+    public void BonusFound(ItemData_SO item) {
+        foreach (var data in equipmentData.items) {
+            if (data.itemData == item) {
+                item.ApplyBonusEffect();
+            } else { 
+            }
+        }
+    }
+
     public bool CheckInInventoryUI( Vector3 position ) {
         for (int i = 0 ; i < inventoryUI.slotHolders.Length ; i++) {
             RectTransform t = inventoryUI.slotHolders[ i ].transform as RectTransform;

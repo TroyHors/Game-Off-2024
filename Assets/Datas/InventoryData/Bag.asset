@@ -17,49 +17,49 @@ MonoBehaviour:
     amount: 10
   - itemData: {fileID: 11400000, guid: 58fcf542ed107894f9aea061e587d98a, type: 2}
     amount: 10
-  - itemData: {fileID: 11400000, guid: eb42247f1642ae9439833f118008ac14, type: 2}
+  - itemData: {fileID: 11400000, guid: 5f71c2c12eaa6fd419422a4e879c6c37, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 644e84363f9e77843badfbbf938f69a2, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: aebcb18e6880cec44a4c20fa32b76200, type: 2}
+    amount: 13
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 11400000, guid: 74e824067333a3943931e9fe62f459a3, type: 2}
+    amount: 87
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 0}
+    amount: 0
+  - itemData: {fileID: 11400000, guid: b7f14fa15adeb5542b2822d4ebdf6063, type: 2}
     amount: 1
   - itemData: {fileID: 0}
     amount: 0
   - itemData: {fileID: 0}
     amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 11400000, guid: 5603e7cafea6b1749995ed890cf3b7e3, type: 2}
+  - itemData: {fileID: 11400000, guid: 163c40aada4cb4f4fb2a650656e72874, type: 2}
     amount: 1
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
-  - itemData: {fileID: 0}
-    amount: 0
   - itemData: {fileID: 0}
     amount: 0
