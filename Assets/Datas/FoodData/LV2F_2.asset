@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a432c218d82045a30798a198f1fe5, type: 3}
   m_Name: LV2F_2
   m_EditorClassIdentifier: 
-  mutation: 0
-  hunger: 0
+  mutation: 10
+  hunger: 7
+  returnItem: {fileID: 0}

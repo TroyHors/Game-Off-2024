@@ -16,7 +16,7 @@ public class ItemTooltip : MonoBehaviour
                 count += inventoryItem.amount;
             }
         }
-        itemNameText.text = item.name + $" * {count}";
+        itemNameText.text = item.itemName + $" * {count}";
         itemInfoText.text = item.description;
     }
 

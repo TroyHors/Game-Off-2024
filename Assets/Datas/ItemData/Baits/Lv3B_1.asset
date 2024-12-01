@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Lv3B_1
   m_EditorClassIdentifier: 
   itemType: 2
-  itemName: Lv3B_1
-  itemIcon: {fileID: 0}
+  itemName: Gummy Worms
+  itemIcon: {fileID: 21300000, guid: e21e532009eac8b4bb23c1c5d70596e0, type: 3}
   itemAmount: 1
   maxStack: 100
   stackable: 1
-  baitsLevel: 2
-  targetFish: {fileID: 11400000, guid: 2f80acf4671287f44b67178cb56f9d9e, type: 2}
   description: 
+  baitsLevel: 3
+  targetFish: {fileID: 11400000, guid: 2f80acf4671287f44b67178cb56f9d9e, type: 2}
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 0}

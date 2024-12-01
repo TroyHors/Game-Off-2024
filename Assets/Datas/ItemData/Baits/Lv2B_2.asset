@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Lv2B_2
   m_EditorClassIdentifier: 
   itemType: 2
-  itemName: Lv2B_2
-  itemIcon: {fileID: 0}
+  itemName: Nature's bounty
+  itemIcon: {fileID: 21300000, guid: 3e38e74baf5a12a4997e9d83c6811d88, type: 3}
   itemAmount: 1
   maxStack: 100
   stackable: 1
+  description: 
   baitsLevel: 2
   targetFish: {fileID: 11400000, guid: 14bfbdfa311ad2942b90293499c1f224, type: 2}
-  description: 
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 0}

@@ -17,5 +17,9 @@ MonoBehaviour:
     requiredAmount: 1
   - itemData: {fileID: 11400000, guid: b7f14fa15adeb5542b2822d4ebdf6063, type: 2}
     requiredAmount: 1
+  - itemData: {fileID: 11400000, guid: 20fb59afd6a10dd47a0fec06376ac438, type: 2}
+    requiredAmount: 3
+  - itemData: {fileID: 11400000, guid: a49a6668e3683b14592a59823c20bc95, type: 2}
+    requiredAmount: 3
   resultItem: {fileID: 11400000, guid: 79360157f8816e44ebe1a333deac3790, type: 2}
   resultAmount: 1

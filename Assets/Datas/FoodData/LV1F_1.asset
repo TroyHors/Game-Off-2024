@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a432c218d82045a30798a198f1fe5, type: 3}
   m_Name: LV1F_1
   m_EditorClassIdentifier: 
-  mutation: 10
-  hunger: 10
-  returnItem: {fileID: 11400000, guid: aebcb18e6880cec44a4c20fa32b76200, type: 2}
+  mutation: 5
+  hunger: 5
+  returnItem: {fileID: 0}

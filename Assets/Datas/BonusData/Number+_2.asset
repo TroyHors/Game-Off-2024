@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171c8b5dc19271c4f9885a13bdfd34a1, type: 3}
   m_Name: Number+_2
   m_EditorClassIdentifier: 
-  maxBonus: 50
-  addBonus: 5
+  maxBonus: 150
+  addBonus: 10

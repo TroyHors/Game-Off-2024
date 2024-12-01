@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu( fileName = "New CraftingData" , menuName = "Interact/Crafting Data" )]
 public class CraftingData_SO : InventoryData_SO {

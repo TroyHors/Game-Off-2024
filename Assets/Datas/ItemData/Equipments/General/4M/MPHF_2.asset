@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: MPHF_2
   m_EditorClassIdentifier: 
   itemType: 3
-  itemName: MPHF_2
-  itemIcon: {fileID: 0}
+  itemName: $$$
+  itemIcon: {fileID: 21300000, guid: 2bde060b3d24da947b9ef7d1e36fd193, type: 3}
   itemAmount: 1
   maxStack: 1
   stackable: 0
+  description: 
   baitsLevel: 1
   targetFish: {fileID: 0}
-  description: 
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 0}

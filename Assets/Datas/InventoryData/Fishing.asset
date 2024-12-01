@@ -28,3 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f80acf4671287f44b67178cb56f9d9e, type: 2}
   - {fileID: 11400000, guid: b955ab8aa8afb5e46b684c464d5d98f5, type: 2}
   - {fileID: 11400000, guid: d151ba72cfc0aee48bb269b2676bdc45, type: 2}
+  specialFish: {fileID: 11400000, guid: f789b6b3df1cb2940a5e78a127aecc4e, type: 2}

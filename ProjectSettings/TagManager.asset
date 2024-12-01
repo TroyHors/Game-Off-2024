@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bed
   - Tilemap
+  - Pick
   layers:
   - Default
   - TransparentFX

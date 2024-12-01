@@ -9,6 +9,7 @@ public class FishingData_SO : InventoryData_SO {
     public List<ItemData_SO> categoryLv1 = new List<ItemData_SO>();
     public List<ItemData_SO> categoryLv2 = new List<ItemData_SO>();
     public List<ItemData_SO> categoryLv3 = new List<ItemData_SO>();
+    public ItemData_SO specialFish;
 
     public void Fishing() {
         // 检查是否有 Bait
@@ -22,6 +23,18 @@ public class FishingData_SO : InventoryData_SO {
         int baitLevel = baitItem.itemData.baitsLevel;
         ItemData_SO targetFish = baitItem.itemData.targetFish;
 
+        if (baitLevel == 4) {
+            InventoryManager.Instance.inventoryData.AddItem( specialFish , 1 );
+            PlayerController.Instance.UpdateHunger( -7 );
+            baitItem.amount -= 1;
+            if (baitItem.amount <= 0) {
+                baitItem.itemData = null;
+            }
+            InventoryManager.Instance.fishingUI.RefreshUI();
+            InventoryManager.Instance.inventoryUI.RefreshUI();
+            Debug.Log( $"钓鱼成功！获得了 {specialFish.itemName}" );
+            return ;
+        }
         // 确定钓鱼概率
         float lv1Probability = 0f, lv2Probability = 0f, lv3Probability = 0f;
 
@@ -49,7 +62,7 @@ public class FishingData_SO : InventoryData_SO {
             selectedCategory = categoryLv2;
         } else if(randomCategory < lv1Probability+lv2Probability+lv3Probability){
             selectedCategory = categoryLv3;
-        }
+        } 
 
         if (selectedCategory == null || selectedCategory.Count == 0) {
             Debug.LogWarning( "选中的分类为空或没有物品！" );

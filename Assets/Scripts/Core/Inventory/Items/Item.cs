@@ -1,8 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
-public enum ItemType { Fish, SP, Bait, Eq }
+public enum ItemType { Fish, SP, Bait, Eq, Story }
 
 [CreateAssetMenu( fileName = "New Item" , menuName = "Inventory/Item Data" )]
 public class ItemData_SO : ScriptableObject {
@@ -16,7 +15,7 @@ public class ItemData_SO : ScriptableObject {
     public string description = "";
 
     [Header( "Baits" )]
-    [Range( 1 , 3 )]
+    [Range( 1 , 4)]
     public int baitsLevel;
     public ItemData_SO targetFish;
 

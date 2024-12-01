@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62d26680f95c714b9abc41b657e6a41, type: 3}
+  m_Name: Gp gone mad
+  m_EditorClassIdentifier: 
+  storyNodes:
+  - ID: 1
+    targetID: 2
+    backgroundImage: {fileID: 21300000, guid: edc13997d4697a44295b8be8d6242234, type: 3}
+    isCutscene: 0
+    text: "\u201CWhat a beau! I can\u2019t believe you\u2019re so good at catching
+      fish! Now I can feel at rest leaving my resort to you.\u201D\r\n"
+    options: []
+  - ID: 2
+    targetID: 3
+    backgroundImage: {fileID: 21300000, guid: edc13997d4697a44295b8be8d6242234, type: 3}
+    isCutscene: 0
+    text: "But Grandpa\u2013\r\n"
+    options: []
+  - ID: 3
+    targetID: 4
+    backgroundImage: {fileID: 21300000, guid: edc13997d4697a44295b8be8d6242234, type: 3}
+    isCutscene: 0
+    text: "\u201CShhhh! Look at the way it struggles\u2026 It\u2019s simply\u2026
+      EleGaNT!\u201D \r\n"
+    options: []
+  - ID: 4
+    targetID: 5
+    backgroundImage: {fileID: 21300000, guid: edc13997d4697a44295b8be8d6242234, type: 3}
+    isCutscene: 0
+    text: "Grandpa\u2026 is still Grandpa, right?\r\n"
+    options: []
+  - ID: 5
+    targetID: 6
+    backgroundImage: {fileID: 21300000, guid: 86140096be8e8e5478e17a510bb3cc0b, type: 3}
+    isCutscene: 0
+    text: "\u201CCyfrin, Cyfrin! My proud grandson! Surely you won\u2019t mind catching
+      a fish for me? I have been trying to catch it for so long but it simply wouldn\u2019t
+      show up!\u201D\r\n"
+    options: []
+  - ID: 6
+    targetID: 7
+    backgroundImage: {fileID: 21300000, guid: 86140096be8e8e5478e17a510bb3cc0b, type: 3}
+    isCutscene: 0
+    text: 'Grandpa is smiling. You shudder, but your legs move on instinct. You must
+      catch fish.
+
+'
+    options: []

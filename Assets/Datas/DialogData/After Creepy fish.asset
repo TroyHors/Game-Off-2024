@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62d26680f95c714b9abc41b657e6a41, type: 3}
+  m_Name: After Creepy fish
+  m_EditorClassIdentifier: 
+  storyNodes:
+  - ID: 1
+    targetID: 2
+    backgroundImage: {fileID: 21300000, guid: e21e532009eac8b4bb23c1c5d70596e0, type: 3}
+    isCutscene: 0
+    text: "\u201C!!!\u201D\r\n"
+    options: []
+  - ID: 2
+    targetID: 3
+    backgroundImage: {fileID: 0}
+    isCutscene: 0
+    text: "\u201CYou are not supposed to have caught that\u201D\r\n"
+    options: []
+  - ID: 3
+    targetID: 4
+    backgroundImage: {fileID: 0}
+    isCutscene: 0
+    text: "\u201CThrow it back right now\u201D\r\n"
+    options: []
+  - ID: 4
+    targetID: 5
+    backgroundImage: {fileID: 21300000, guid: 834a61c79c0230c418d0ad2a16581706, type: 3}
+    isCutscene: 0
+    text: "\u201C...\u201D\r\n"
+    options: []
+  - ID: 5
+    targetID: 6
+    backgroundImage: {fileID: 21300000, guid: 834a61c79c0230c418d0ad2a16581706, type: 3}
+    isCutscene: 0
+    text: "\u201CCyfrin, now that you\u2019ve seen that fish, I must be honest with
+      you. Something is in those waters. Those algae, they aren\u2019t from here.\u201D
+      \r\n"
+    options: []
+  - ID: 6
+    targetID: 7
+    backgroundImage: {fileID: 21300000, guid: 834a61c79c0230c418d0ad2a16581706, type: 3}
+    isCutscene: 0
+    text: "\u201CI don\u2019t want to scare you. You must have been through a lot,
+      but you must stay calm. Listen to my instructions. You will be okay. You WILL
+      be okay, alright?\u201D \r\n"
+    options: []
+  - ID: 7
+    targetID: 8
+    backgroundImage: {fileID: 21300000, guid: 881ae8436081f5e4bb36bd2bc10c05e1, type: 3}
+    isCutscene: 0
+    text: "I will be ok\u2026 I will be okay\u2026 I will be okay I will be okay
+      I willbeokaybeokay\r\n"
+    options: []
+  - ID: 8
+    targetID: 9
+    backgroundImage: {fileID: 21300000, guid: 881ae8436081f5e4bb36bd2bc10c05e1, type: 3}
+    isCutscene: 0
+    text: "\u201CListen, no matter what happens, remember that you are a human.\u201D\r\n"
+    options: []
+  - ID: 9
+    targetID: 10
+    backgroundImage: {fileID: 21300000, guid: 881ae8436081f5e4bb36bd2bc10c05e1, type: 3}
+    isCutscene: 0
+    text: 'What the fuck defines a human? You think to yourself in amusement
+
+'
+    options: []
+  - ID: 11
+    targetID: 12
+    backgroundImage: {fileID: 21300000, guid: 1e36ed7d97f61af478c40f9970244800, type: 3}
+    isCutscene: 0
+    text: 'You feel a strange sense of suffocation. You are breathing, but the act
+      of breathing does not alleviate the clogginess amassed in your chest. '
+    options: []
+  - ID: 10
+    targetID: 11
+    backgroundImage: {fileID: 21300000, guid: 1e36ed7d97f61af478c40f9970244800, type: 3}
+    isCutscene: 0
+    text: "Wouldn\u2019t it be nice if I were just one of those fish in the lake?
+      Swimming around willy-nilly without a care in the world\u2026 \r\n"
+    options: []
+  - ID: 12
+    targetID: 13
+    backgroundImage: {fileID: 21300000, guid: c66585194fed1774aacbf5a4ddfe5b1a, type: 3}
+    isCutscene: 0
+    text: "\u201CCyfrin! Cyfrin!\u201D"
+    options: []
+  - ID: 13
+    targetID: 14
+    backgroundImage: {fileID: 21300000, guid: c66585194fed1774aacbf5a4ddfe5b1a, type: 3}
+    isCutscene: 0
+    text: "Grandpa\u2019s call pulls you out of the trance. \r\n"
+    options: []
+  - ID: 14
+    targetID: 
+    backgroundImage: {fileID: 21300000, guid: c66585194fed1774aacbf5a4ddfe5b1a, type: 3}
+    isCutscene: 0
+    text: "One shithole to another. Of course this is what I deserved. \r\n"
+    options: []

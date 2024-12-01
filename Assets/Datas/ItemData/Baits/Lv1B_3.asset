@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Lv1B_3
   m_EditorClassIdentifier: 
   itemType: 2
-  itemName: Lv1B_1
-  itemIcon: {fileID: 0}
+  itemName: Worm
+  itemIcon: {fileID: 21300000, guid: 0608f78cff1405448b75a125b329cdb0, type: 3}
   itemAmount: 1
   maxStack: 100
   stackable: 1
+  description: 
   baitsLevel: 1
   targetFish: {fileID: 11400000, guid: 20d3d1a7d1d98314f9485faed3ae5c86, type: 2}
-  description: 
   bonusEffect: {fileID: 0}
+  foodsData: {fileID: 0}

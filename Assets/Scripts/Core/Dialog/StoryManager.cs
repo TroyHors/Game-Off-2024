@@ -22,6 +22,8 @@ public class StoryManager : Singleton<StoryManager> {
 
     public bool isStoryActive = false;
 
+
+
     private void Update() {
         // 鼠标点击推进剧情
         if (isStoryActive && Input.GetMouseButtonDown( 0 )) {
@@ -58,12 +60,7 @@ public class StoryManager : Singleton<StoryManager> {
                 backgroundImage.sprite = defaultBackgroundImage;
             }
 
-            if (node.characterImage != null) {
-                characterImage.sprite = node.characterImage;
-                characterImage.enabled = true;
-            } else {
-                characterImage.enabled = false;
-            }
+          
 
             storyText.text = node.text;
             storyPanel.SetActive( true );

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf238cbd2bb2604e8a3412ecab35327, type: 3}
+  m_Name: sumptuous meal
+  m_EditorClassIdentifier: 
+  ingredients:
+  - itemData: {fileID: 11400000, guid: e876b2097ba3197468fa0f4d94c23fad, type: 2}
+    requiredAmount: 3
+  - itemData: {fileID: 11400000, guid: 828a48dae17cbc14b988464b24c41fd1, type: 2}
+    requiredAmount: 3
+  - itemData: {fileID: 11400000, guid: 0028457b3bc2aff4688469f8011afc25, type: 2}
+    requiredAmount: 3
+  resultItem: {fileID: 11400000, guid: 6f169d6bdd57e5c4d8349e4d16cbf9b0, type: 2}
+  resultAmount: 1

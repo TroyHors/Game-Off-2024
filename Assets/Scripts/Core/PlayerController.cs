@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     // 饱食度相关
     [Header( "Hunger Settings" )]
-    public int maxHunger = 100; // 饱食度最大值
+    public int maxHunger = 300; // 饱食度最大值
     public int currentHunger; // 当前饱食度
     public int maxHBonus = 0;
     public int addHBonus = 0;
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour {
             nearbyInteractable = null;
         }
     }
-    private int GetCurrentMutationLevelIndex() {
+    public int GetCurrentMutationLevelIndex() {
         for (int i = mutationThresholds.Count - 1 ; i >= 0 ; i--) {
             if (currentMutation >= mutationThresholds[ i ]) {
                 return i;

@@ -12,4 +12,99 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Opening
   m_EditorClassIdentifier: Assembly-CSharp::StoryData_SO
-  storyNodes: []
+  storyNodes:
+  - ID: C1
+    targetID: Q1
+    backgroundImage: {fileID: 21300000, guid: 0335d62ec194b654d8ddb8fe6c1e5379, type: 3}
+    isCutscene: 1
+    text: 
+    options: []
+  - ID: Q1
+    targetID: Q3
+    backgroundImage: {fileID: 21300000, guid: 0335d62ec194b654d8ddb8fe6c1e5379, type: 3}
+    isCutscene: 0
+    text: "Running away sure isn\u2019t easy \r\n"
+    options: []
+  - ID: Q3
+    targetID: Q4
+    backgroundImage: {fileID: 21300000, guid: 0335d62ec194b654d8ddb8fe6c1e5379, type: 3}
+    isCutscene: 0
+    text: "You\u2019re tired, unsure if it\u2019s the alcohol or the sleepless nights.
+      \r\n"
+    options: []
+  - ID: Q4
+    targetID: Q5
+    backgroundImage: {fileID: 21300000, guid: 0335d62ec194b654d8ddb8fe6c1e5379, type: 3}
+    isCutscene: 0
+    text: "But you\u2019re finally here, at your grandpa\u2019s fishing site, and
+      with you a full bladder. \r\n"
+    options: []
+  - ID: Q5
+    targetID: C2
+    backgroundImage: {fileID: 21300000, guid: 833520d4789558c48870b909d3b0e085, type: 3}
+    isCutscene: 0
+    text: "Where is a better place to pee than in this glorious, spooky lake? \r\n"
+    options: []
+  - ID: C2
+    targetID: C3
+    backgroundImage: {fileID: 21300000, guid: 077f1075ec6ab3b429839fc359ccddb7, type: 3}
+    isCutscene: 0
+    text: 
+    options: []
+  - ID: C3
+    targetID: Q6
+    backgroundImage: {fileID: 21300000, guid: 72d2065d47b3d3d47a1e14f087a60058, type: 3}
+    isCutscene: 0
+    text: 
+    options: []
+  - ID: Q6
+    targetID: D1
+    backgroundImage: {fileID: 21300000, guid: e05e4469be7a35b43acbe050b316f1f6, type: 3}
+    isCutscene: 0
+    text: "It\u2019s Grandpa. \r\n"
+    options: []
+  - ID: D1
+    targetID: Q7
+    backgroundImage: {fileID: 21300000, guid: e05e4469be7a35b43acbe050b316f1f6, type: 3}
+    isCutscene: 0
+    text: "\u201CCyfrin! What are you doing here? You must come with me right now!\u201D
+      \r\n"
+    options: []
+  - ID: Q7
+    targetID: Q8
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "Grandpa drags you inside. \r\n"
+    options: []
+  - ID: Q8
+    targetID: D2
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "You explain to Grandpa that you\u2019ve run away and that you have nowhere
+      to go. \r\n"
+    options: []
+  - ID: D2
+    targetID: D3
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "\u201C...\u201D "
+    options: []
+  - ID: D3
+    targetID: D4
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "\u201CSorry about this sorry state\u2026 I was hunting just now and got
+      myself a little messy.\u201D\r\n"
+    options: []
+  - ID: D4
+    targetID: D5
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "\u201CStarting from today you will learn fishing with me.\u201D\r\n"
+    options: []
+  - ID: D5
+    targetID: 
+    backgroundImage: {fileID: 21300000, guid: 9d55dc6b8414c94409d830596ba59b7b, type: 3}
+    isCutscene: 0
+    text: "Anything to get out of that damned place. you think to yourself. \r\n"
+    options: []

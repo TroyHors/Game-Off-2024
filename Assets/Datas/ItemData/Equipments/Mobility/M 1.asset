@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: M 1
   m_EditorClassIdentifier: 
   itemType: 3
-  itemName: M1
-  itemIcon: {fileID: 0}
+  itemName: Fishing Boots
+  itemIcon: {fileID: 21300000, guid: 122825c7ed07728419c10779c5369907, type: 3}
   itemAmount: 1
   maxStack: 1
   stackable: 0

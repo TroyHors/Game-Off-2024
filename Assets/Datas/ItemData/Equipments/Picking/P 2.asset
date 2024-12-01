@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: P 2
   m_EditorClassIdentifier: 
   itemType: 3
-  itemName: P2
-  itemIcon: {fileID: 0}
+  itemName: G1ov3s
+  itemIcon: {fileID: 21300000, guid: 98706697775fceb4086b2573e18a0a19, type: 3}
   itemAmount: 1
   maxStack: 1
   stackable: 0
